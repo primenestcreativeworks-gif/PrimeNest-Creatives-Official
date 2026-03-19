@@ -31,7 +31,7 @@ export async function createCaseStudy(formData: FormData) {
 
     if (uploadError) {
       console.error('Upload Error:', uploadError);
-      throw new Error(`Failed to upload image: ${uploadError.message}`);
+      redirect(`/admin/case-studies/new?error=${encodeURIComponent('Failed to upload image: ' + uploadError.message)}`);
     }
 
     const { data: { publicUrl } } = supabase.storage
@@ -53,8 +53,8 @@ export async function createCaseStudy(formData: FormData) {
   });
 
   if (error) {
-    console.error(error);
-    throw new Error('Failed to create case study');
+    console.error('Insert Error:', error);
+    redirect(`/admin/case-studies/new?error=${encodeURIComponent('Failed to save to database: ' + error.message)}`);
   }
 
   revalidatePath('/admin/case-studies');

@@ -1,7 +1,9 @@
 import { createCaseStudy } from './actions';
 import Link from 'next/link';
 
-export default function NewCaseStudy() {
+export default async function NewCaseStudy({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+  const { error } = await searchParams;
+
   return (
     <div className="max-w-3xl">
       <div className="mb-8 flex items-center justify-between">
@@ -13,6 +15,15 @@ export default function NewCaseStudy() {
           ← Back
         </Link>
       </div>
+
+      {error && (
+        <div className="mb-8 p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl flex items-center gap-3 text-rose-500">
+          <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
+            ⚠️
+          </div>
+          <p className="text-sm font-medium leading-relaxed">{error}</p>
+        </div>
+      )}
 
       <div className="bg-slate-50 dark:bg-[#07152B] border border-slate-200 dark:border-white/10 rounded-2xl p-6 md:p-8">
         <form action={createCaseStudy} className="space-y-6">
