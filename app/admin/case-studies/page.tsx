@@ -29,7 +29,7 @@ export default async function CaseStudiesAdminPage() {
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Manage Case Studies</h1>
           <p className="text-sm text-slate-400">Add, edit, or remove entries from your Recent Work section.</p>
         </div>
-        <Link href="/admin/case-studies/new" className="px-4 py-2 bg-[#00AEEF] hover:bg-[#38BDF8] text-black text-sm font-bold rounded-xl transition-colors shadow-sm inline-block">
+        <Link href="/admin/case-studies/new" className="px-4 py-2 bg-[#00AEEF] hover:bg-[#38BDF8] text-white text-sm font-bold rounded-xl transition-colors shadow-sm inline-block">
           + Add New Project
         </Link>
       </div>

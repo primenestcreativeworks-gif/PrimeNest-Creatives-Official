@@ -31,7 +31,7 @@ export default async function SettingsAdminPage() {
               <label className="block text-sm font-medium text-slate-300 mb-2">Twitter / X URL</label>
               <input 
                 type="url" 
-                className="w-full px-4 py-2.5 bg-[#050816] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#00AEEF]"
+                className="w-full px-4 py-2.5 bg-[#07152B] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#00AEEF]"
                 placeholder="https://twitter.com/primenest"
                 defaultValue="https://twitter.com/"
               />
@@ -40,7 +40,7 @@ export default async function SettingsAdminPage() {
               <label className="block text-sm font-medium text-slate-300 mb-2">Instagram URL</label>
               <input 
                 type="url" 
-                className="w-full px-4 py-2.5 bg-[#050816] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#00AEEF]"
+                className="w-full px-4 py-2.5 bg-[#07152B] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#00AEEF]"
                 placeholder="https://instagram.com/primenest"
                 defaultValue="https://instagram.com/"
               />
@@ -49,7 +49,7 @@ export default async function SettingsAdminPage() {
               <label className="block text-sm font-medium text-slate-300 mb-2">YouTube Channel URL</label>
               <input 
                 type="url" 
-                className="w-full px-4 py-2.5 bg-[#050816] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#00AEEF]"
+                className="w-full px-4 py-2.5 bg-[#07152B] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#00AEEF]"
                 placeholder="https://youtube.com/@primenest"
                 defaultValue="https://youtube.com/"
               />
@@ -58,7 +58,7 @@ export default async function SettingsAdminPage() {
               <label className="block text-sm font-medium text-slate-300 mb-2">LinkedIn URL</label>
               <input 
                 type="url" 
-                className="w-full px-4 py-2.5 bg-[#050816] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#00AEEF]"
+                className="w-full px-4 py-2.5 bg-[#07152B] border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#00AEEF]"
                 placeholder="https://linkedin.com/company/primenest"
                 defaultValue="https://linkedin.com/"
               />
@@ -66,7 +66,7 @@ export default async function SettingsAdminPage() {
           </div>
           
           <div className="pt-6 border-t border-white/10 flex justify-end">
-             <button type="button" className="px-6 py-2.5 bg-[#00AEEF] hover:bg-[#38BDF8] text-black text-sm font-bold rounded-xl transition-colors shadow-sm">
+             <button type="button" className="px-6 py-2.5 bg-[#00AEEF] hover:bg-[#38BDF8] text-white text-sm font-bold rounded-xl transition-colors shadow-sm">
                 Save Changes
              </button>
           </div>

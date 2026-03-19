@@ -29,7 +29,7 @@ export default async function LeadsPage() {
         </div>
       </div>
 
-      <div className="bg-[#050816] border border-white/10 rounded-2xl overflow-hidden">
+      <div className="bg-[#07152B] border border-white/10 rounded-2xl overflow-hidden">
         {(!leads || leads.length === 0) ? (
           <div className="p-12 text-center text-slate-400">
             <p>No leads have been captured yet.</p>

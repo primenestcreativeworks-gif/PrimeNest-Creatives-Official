@@ -2,7 +2,7 @@ import { login } from './actions';
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-[#050816] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#07152B] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
           Admin Portal
@@ -29,7 +29,7 @@ export default function LoginPage() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-white/10 rounded-xl shadow-sm placeholder-slate-500 focus:outline-none focus:ring-[#00AEEF] focus:border-[#00AEEF] sm:text-sm bg-[#050816]/50 text-white"
+                  className="appearance-none block w-full px-3 py-2 border border-white/10 rounded-xl shadow-sm placeholder-slate-500 focus:outline-none focus:ring-[#00AEEF] focus:border-[#00AEEF] sm:text-sm bg-[#07152B]/50 text-white"
                   placeholder="admin@primenest.com"
                 />
               </div>
@@ -49,7 +49,7 @@ export default function LoginPage() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-white/10 rounded-xl shadow-sm placeholder-slate-500 focus:outline-none focus:ring-[#00AEEF] focus:border-[#00AEEF] sm:text-sm bg-[#050816]/50 text-white"
+                  className="appearance-none block w-full px-3 py-2 border border-white/10 rounded-xl shadow-sm placeholder-slate-500 focus:outline-none focus:ring-[#00AEEF] focus:border-[#00AEEF] sm:text-sm bg-[#07152B]/50 text-white"
                   placeholder="••••••••"
                 />
               </div>
@@ -58,7 +58,7 @@ export default function LoginPage() {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2.5 px-4 rounded-xl shadow-sm text-sm font-bold text-black bg-[#00AEEF] hover:bg-[#38BDF8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00AEEF] focus:ring-offset-[#050816] transition-colors"
+                className="w-full flex justify-center py-2.5 px-4 rounded-xl shadow-sm text-sm font-bold text-white bg-[#00AEEF] hover:bg-[#38BDF8] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00AEEF] focus:ring-offset-[#07152B] transition-colors"
               >
                 Sign in
               </button>

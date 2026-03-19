@@ -5,21 +5,35 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/utils/supabase/server'
 
 export async function login(formData: FormData) {
-  const supabase = await createClient()
-
-  const data = {
+  const { email, password } = {
     email: formData.get('email') as string,
     password: formData.get('password') as string,
   }
 
-  const { error } = await supabase.auth.signInWithPassword(data)
-
-  if (error) {
-    redirect(`/admin/login?error=${encodeURIComponent(error.message)}`)
+  let errorMsg = ''
+  let success = false
+  
+  try {
+    const supabase = await createClient()
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) {
+      errorMsg = error.message
+    } else {
+      success = true
+    }
+  } catch (err: any) {
+    console.error('Login Server Action Crash:', err)
+    errorMsg = err?.message || 'Unknown Server Action Error'
   }
 
-  revalidatePath('/', 'layout')
-  redirect('/admin')
+  if (errorMsg) {
+    redirect(`/admin/login?error=${encodeURIComponent(errorMsg)}`)
+  }
+
+  if (success) {
+    revalidatePath('/', 'layout')
+    redirect('/admin')
+  }
 }
 
 export async function logout() {
