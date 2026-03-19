@@ -1,0 +1,195 @@
+commit f6a24b91784d583b36e38d9d5f7fc0f6bd7e5aa9
+Author: primenestcreativeworks-gif <primenestcreativeworks@gmail.com>
+Date:   Tue Mar 10 01:01:07 2026 +0530
+
+    initial commit
+
+ .gitignore                                         |   14 +
+ Assests/DT REEL 22 JAN 2.mp4                       |  Bin 0 -> 35949749 bytes
+ Assests/GS VISION REEL 18 REEL.mp4                 |  Bin 0 -> 153420988 bytes
+ Assests/SHOWCASE REEL 01.mp4                       |  Bin 0 -> 240969933 bytes
+ Assests/SHOWCASE REEL 02.mp4                       |  Bin 0 -> 49290551 bytes
+ Assests/videoplayback.mp4                          |  Bin 0 -> 1147005 bytes
+ README.md                                          |    1 +
+ app/globals.css                                    |  219 ++
+ app/layout.tsx                                     |   32 +
+ app/page.tsx                                       |   50 +
+ app/services/long-form-edit/page.tsx               |  182 ++
+ app/services/podcast-editing/page.tsx              |  123 +
+ app/services/short-form-content/page.tsx           |  178 ++
+ app/services/social-media-handling/page.tsx        |  117 +
+ app/services/youtube-channel-management/page.tsx   |  111 +
+ components.json                                    |   21 +
+ components/CTAButton.tsx                           |   69 +
+ components/EnquiryForm.tsx                         |  245 ++
+ components/Footer.tsx                              |  150 +
+ components/Header.tsx                              |  305 ++
+ components/InfiniteScrollServices.tsx              |  225 ++
+ components/LogoLoader.tsx                          |   63 +
+ components/ScrollReveal.tsx                        |   41 +
+ components/sections/About.tsx                      |   51 +
+ components/sections/FinalCTA.tsx                   |  100 +
+ components/sections/Hero.tsx                       |  173 ++
+ components/sections/Packages.tsx                   |  175 ++
+ components/sections/Process.tsx                    |  137 +
+ components/sections/Results.tsx                    |  109 +
+ components/sections/Services.tsx                   |   30 +
+ components/sections/Testimonials.tsx               |   77 +
+ components/sections/WorkShowcase.tsx               |  120 +
+ components/theme-provider.tsx                      |   11 +
+ components/ui/accordion.tsx                        |   66 +
+ components/ui/alert-dialog.tsx                     |  157 +
+ components/ui/alert.tsx                            |   66 +
+ components/ui/aspect-ratio.tsx                     |   11 +
+ components/ui/avatar.tsx                           |   53 +
+ components/ui/badge.tsx                            |   46 +
+ components/ui/breadcrumb.tsx                       |  109 +
+ components/ui/button-group.tsx                     |   83 +
+ components/ui/button.tsx                           |   60 +
+ components/ui/calendar.tsx                         |  213 ++
+ components/ui/card.tsx                             |   92 +
+ components/ui/carousel.tsx                         |  241 ++
+ components/ui/chart.tsx                            |  353 +++
+ components/ui/checkbox.tsx                         |   32 +
+ components/ui/collapsible.tsx                      |   33 +
+ components/ui/command.tsx                          |  184 ++
+ components/ui/context-menu.tsx                     |  252 ++
+ components/ui/dialog.tsx                           |  143 +
+ components/ui/drawer.tsx                           |  135 +
+ components/ui/dropdown-menu.tsx                    |  257 ++
+ components/ui/empty.tsx                            |  104 +
+ components/ui/field.tsx                            |  244 ++
+ components/ui/form.tsx                             |  167 +
+ components/ui/hover-card.tsx                       |   44 +
+ components/ui/input-group.tsx                      |  169 ++
+ components/ui/input-otp.tsx                        |   77 +
+ components/ui/input.tsx                            |   21 +
+ components/ui/item.tsx                             |  193 ++
+ components/ui/kbd.tsx                              |   28 +
+ components/ui/label.tsx                            |   24 +
+ components/ui/menubar.tsx                          |  276 ++
+ components/ui/navigation-menu.tsx                  |  166 +
+ components/ui/pagination.tsx                       |  127 +
+ components/ui/popover.tsx                          |   48 +
+ components/ui/progress.tsx                         |   31 +
+ components/ui/radio-group.tsx                      |   45 +
+ components/ui/resizable.tsx                        |   56 +
+ components/ui/scroll-area.tsx                      |   58 +
+ components/ui/select.tsx                           |  185 ++
+ components/ui/separator.tsx                        |   28 +
+ components/ui/sheet.tsx                            |  139 +
+ components/ui/sidebar.tsx                          |  726 +++++
+ components/ui/skeleton.tsx                         |   13 +
+ components/ui/slider.tsx                           |   63 +
+ components/ui/sonner.tsx                           |   25 +
+ components/ui/spinner.tsx                          |   16 +
+ components/ui/switch.tsx                           |   31 +
+ components/ui/table.tsx                            |  116 +
+ components/ui/tabs.tsx                             |   66 +
+ components/ui/textarea.tsx                         |   18 +
+ components/ui/toast.tsx                            |  129 +
+ components/ui/toaster.tsx                          |   35 +
+ components/ui/toggle-group.tsx                     |   73 +
+ components/ui/toggle.tsx                           |   47 +
+ components/ui/tooltip.tsx                          |   61 +
+ components/ui/use-mobile.tsx                       |   19 +
+ components/ui/use-toast.ts                         |  191 ++
+ hooks/use-mobile.ts                                |   19 +
+ hooks/use-toast.ts                                 |  191 ++
+ hooks/useCountUp.ts                                |   50 +
+ hooks/useScrollReveal.ts                           |   41 +
+ infinite-scrolling-images/.gitignore               |   27 +
+ infinite-scrolling-images/app/globals.css          |  125 +
+ infinite-scrolling-images/app/layout.tsx           |   45 +
+ infinite-scrolling-images/app/page.tsx             |    9 +
+ infinite-scrolling-images/components.json          |   21 +
+ .../components/theme-provider.tsx                  |   11 +
+ .../components/time-machine.tsx                    |  170 ++
+ .../components/ui/accordion.tsx                    |   66 +
+ .../components/ui/alert-dialog.tsx                 |  157 +
+ infinite-scrolling-images/components/ui/alert.tsx  |   66 +
+ .../components/ui/aspect-ratio.tsx                 |   11 +
+ infinite-scrolling-images/components/ui/avatar.tsx |   53 +
+ infinite-scrolling-images/components/ui/badge.tsx  |   46 +
+ .../components/ui/breadcrumb.tsx                   |  109 +
+ .../components/ui/button-group.tsx                 |   83 +
+ infinite-scrolling-images/components/ui/button.tsx |   60 +
+ .../components/ui/calendar.tsx                     |  213 ++
+ infinite-scrolling-images/components/ui/card.tsx   |   92 +
+ .../components/ui/carousel.tsx                     |  241 ++
+ infinite-scrolling-images/components/ui/chart.tsx  |  353 +++
+ .../components/ui/checkbox.tsx                     |   32 +
+ .../components/ui/collapsible.tsx                  |   33 +
+ .../components/ui/command.tsx                      |  184 ++
+ .../components/ui/context-menu.tsx                 |  252 ++
+ infinite-scrolling-images/components/ui/dialog.tsx |  143 +
+ infinite-scrolling-images/components/ui/drawer.tsx |  135 +
+ .../components/ui/dropdown-menu.tsx                |  257 ++
+ infinite-scrolling-images/components/ui/empty.tsx  |  104 +
+ infinite-scrolling-images/components/ui/field.tsx  |  244 ++
+ infinite-scrolling-images/components/ui/form.tsx   |  167 +
+ .../components/ui/hover-card.tsx                   |   44 +
+ .../components/ui/input-group.tsx                  |  169 ++
+ .../components/ui/input-otp.tsx                    |   77 +
+ infinite-scrolling-images/components/ui/input.tsx  |   21 +
+ infinite-scrolling-images/components/ui/item.tsx   |  193 ++
+ infinite-scrolling-images/components/ui/kbd.tsx    |   28 +
+ infinite-scrolling-images/components/ui/label.tsx  |   24 +
+ .../components/ui/menubar.tsx                      |  276 ++
+ .../components/ui/navigation-menu.tsx              |  166 +
+ .../components/ui/pagination.tsx                   |  127 +
+ .../components/ui/popover.tsx                      |   48 +
+ .../components/ui/progress.tsx                     |   31 +
+ .../components/ui/radio-group.tsx                  |   45 +
+ .../components/ui/resizable.tsx                    |   56 +
+ .../components/ui/scroll-area.tsx                  |   58 +
+ infinite-scrolling-images/components/ui/select.tsx |  185 ++
+ .../components/ui/separator.tsx                    |   28 +
+ infinite-scrolling-images/components/ui/sheet.tsx  |  139 +
+ .../components/ui/sidebar.tsx                      |  726 +++++
+ .../components/ui/skeleton.tsx                     |   13 +
+ infinite-scrolling-images/components/ui/slider.tsx |   63 +
+ infinite-scrolling-images/components/ui/sonner.tsx |   25 +
+ .../components/ui/spinner.tsx                      |   16 +
+ infinite-scrolling-images/components/ui/switch.tsx |   31 +
+ infinite-scrolling-images/components/ui/table.tsx  |  116 +
+ infinite-scrolling-images/components/ui/tabs.tsx   |   66 +
+ .../components/ui/textarea.tsx                     |   18 +
+ infinite-scrolling-images/components/ui/toast.tsx  |  129 +
+ .../components/ui/toaster.tsx                      |   35 +
+ .../components/ui/toggle-group.tsx                 |   73 +
+ infinite-scrolling-images/components/ui/toggle.tsx |   47 +
+ .../components/ui/tooltip.tsx                      |   61 +
+ .../components/ui/use-mobile.tsx                   |   19 +
+ .../components/ui/use-toast.ts                     |  191 ++
+ infinite-scrolling-images/hooks/use-mobile.ts      |   19 +
+ infinite-scrolling-images/hooks/use-shortcut.ts    |   22 +
+ infinite-scrolling-images/hooks/use-toast.ts       |  191 ++
+ infinite-scrolling-images/lib/utils.ts             |    6 +
+ infinite-scrolling-images/next.config.mjs          |   11 +
+ infinite-scrolling-images/package.json             |   75 +
+ infinite-scrolling-images/postcss.config.mjs       |    8 +
+ infinite-scrolling-images/styles/globals.css       |  125 +
+ infinite-scrolling-images/tsconfig.json            |   27 +
+ lib/utils.ts                                       |    6 +
+ next-env.d.ts                                      |    6 +
+ next.config.mjs                                    |   11 +
+ package.json                                       |   72 +
+ pnpm-lock.yaml                                     | 3209 ++++++++++++++++++++
+ postcss.config.mjs                                 |    8 +
+ ...ypography Designs_ Powerful Words-Photoroom.png |  Bin 0 -> 143987 bytes
+ public/Insta-after.jpeg                            |  Bin 0 -> 33078 bytes
+ public/Long Form,longform.jpg                      |  Bin 0 -> 131414 bytes
+ public/Podcast.jpg                                 |  Bin 0 -> 125997 bytes
+ public/Screenshot (298).png                        |  Bin 0 -> 2742481 bytes
+ public/Screenshot (299).png                        |  Bin 0 -> 1506845 bytes
+ public/Screenshot 2026-03-08 204440.png            |  Bin 0 -> 738777 bytes
+ public/Short Edits.jpg                             |  Bin 0 -> 125347 bytes
+ public/Social media.jpg                            |  Bin 0 -> 128967 bytes
+ public/Youtube.jpg                                 |  Bin 0 -> 112268 bytes
+ public/insta-before.jpeg                           |  Bin 0 -> 33262 bytes
+ public/primenest-logo.svg                          |   43 +
+ public/sitelogo.png                                |  Bin 0 -> 1570 bytes
+ styles/globals.css                                 |  125 +
+ tsconfig.json                                      |   41 +
+ 188 files changed, 20733 insertions(+)

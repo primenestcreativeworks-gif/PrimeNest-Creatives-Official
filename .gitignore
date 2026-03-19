@@ -1,0 +1,45 @@
+# v0 runtime files
+__v0_runtime_loader.js
+__v0_devtools.tsx
+__v0_jsx-dev-runtime.ts
+
+# Dependencies
+node_modules/
+dist/
+build/
+.next/
+out/
+
+# Environment and Local Files
+.env*.local
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Large Media Files (Videos & Audios)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.m4a
+*.mp3
+*.wav
+*.flac
+
+# Other large binary files
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.exe
+*.dmg
+*.iso
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
