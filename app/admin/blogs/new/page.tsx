@@ -1,5 +1,6 @@
 import { createBlogPost } from './actions';
 import Link from 'next/link';
+import { SubmitButton } from '@/components/SubmitButton';
 
 export default function NewBlogPost({ searchParams }: { searchParams: { error?: string } | any }) {
   // Ensure searchParams is handled safely whether it's an object or an unresolved promise in Next 15
@@ -61,9 +62,9 @@ export default function NewBlogPost({ searchParams }: { searchParams: { error?: 
           </div>
 
           <div className="pt-6 border-t border-slate-200 dark:border-white/10 flex justify-end">
-             <button type="submit" className="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-white dark:bg-white dark:text-[#040D1A] dark:hover:bg-slate-200 text-sm font-bold rounded-xl transition-colors shadow-sm">
+             <SubmitButton loadingText="Uploading & Saving..." className="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-white dark:bg-white dark:text-[#040D1A] dark:hover:bg-slate-200 text-sm font-bold rounded-xl transition-colors shadow-sm">
                 Save Post
-             </button>
+             </SubmitButton>
           </div>
         </form>
       </div>

@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { deleteCaseStudy } from './actions';
 
 export default async function CaseStudiesAdminPage() {
   const supabase = await createClient();
@@ -58,9 +59,11 @@ export default async function CaseStudiesAdminPage() {
                     <td className="p-4 text-sm font-medium text-slate-900 dark:text-white">{study.client}</td>
                     <td className="p-4 text-sm text-slate-500 dark:text-slate-400 max-w-xs truncate">{study.headline}</td>
                     <td className="p-4 text-sm text-emerald-400">{study.metric}</td>
-                    <td className="p-4 text-sm text-right">
-                      <button className="text-[#00AEEF] hover:text-slate-900 dark:text-white transition-colors mr-3 font-medium">Edit</button>
-                      <button className="text-rose-400 hover:text-rose-300 transition-colors font-medium">Delete</button>
+                    <td className="p-4 text-sm text-right flex items-center justify-end gap-3">
+                      <button className="text-[#00AEEF] hover:text-slate-900 dark:text-white transition-colors font-medium">Edit</button>
+                      <form action={deleteCaseStudy.bind(null, study.id)}>
+                        <button type="submit" className="text-rose-400 hover:text-rose-300 transition-colors font-medium">Delete</button>
+                      </form>
                     </td>
                   </tr>
                 ))}

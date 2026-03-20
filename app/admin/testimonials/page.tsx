@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { deleteTestimonial } from './actions';
 
 export default async function TestimonialsAdminPage() {
   const supabase = await createClient();
@@ -52,7 +53,9 @@ export default async function TestimonialsAdminPage() {
               </div>
               <div className="mt-6 pt-4 border-t border-slate-200 dark:border-white/10 flex justify-end gap-3">
                 <button className="text-sm font-medium text-[#00AEEF] hover:text-slate-900 dark:text-white transition-colors">Edit</button>
-                <button className="text-sm font-medium text-rose-400 hover:text-rose-300 transition-colors">Delete</button>
+                <form action={deleteTestimonial.bind(null, t.id)}>
+                  <button type="submit" className="text-sm font-medium text-rose-400 hover:text-rose-300 transition-colors">Delete</button>
+                </form>
               </div>
             </div>
           ))

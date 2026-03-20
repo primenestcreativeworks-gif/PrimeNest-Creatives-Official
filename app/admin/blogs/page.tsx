@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import { deleteBlog } from './actions';
 
 export default async function BlogsAdminPage() {
   const supabase = await createClient();
@@ -62,8 +63,10 @@ export default async function BlogsAdminPage() {
                        </span>
                     </td>
                     <td className="p-4 text-sm text-right">
-                      <button className="text-[#00AEEF] hover:text-slate-900 dark:text-white transition-colors mr-3 font-medium">Edit</button>
-                      <button className="text-rose-400 hover:text-rose-300 transition-colors font-medium">Delete</button>
+                       <button className="text-[#00AEEF] hover:text-slate-900 dark:text-white transition-colors mr-3 font-medium">Edit</button>
+                       <form action={deleteBlog.bind(null, b.id)} className="inline-block">
+                         <button type="submit" className="text-rose-400 hover:text-rose-300 transition-colors font-medium">Delete</button>
+                       </form>
                     </td>
                   </tr>
                 ))}
