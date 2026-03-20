@@ -13,8 +13,28 @@ import { FinalCTA } from '@/components/sections/FinalCTA';
 import { Footer } from '@/components/Footer';
 
 export default function Home() {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PrimeNest Creatives",
+    "url": "https://www.primenestcreatives.com",
+    "logo": "https://www.primenestcreatives.com/logo.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-7217207811",
+      "contactType": "customer service"
+    },
+    "sameAs": [
+      "https://www.instagram.com/primenestcreatives"
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <LogoLoader />
       <Header />
       

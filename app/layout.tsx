@@ -9,8 +9,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'PrimeNest Creative | Premium Content Production Agency',
-  description: 'We build content that looks premium and performs even better. Video editing, thumbnails, AI content, and social media growth.',
+  title: 'PrimeNest Creatives | Premium Video Editing Agency for YouTubers & Creators',
+  description: 'India-based premium video editing agency specialising in short form, long form and podcast editing for creators worldwide.',
   generator: 'v0.app',
   icons: {
     icon: '/sitelogo.png',
