@@ -39,8 +39,8 @@ export function Hero() {
             </p>
           </div>
 
-          {/* CTA Buttons + Social proof */}
-          <div className="space-y-6">
+          {/* CTA Buttons */}
+          <div>
             <div className="flex flex-col sm:flex-row gap-3">
               <CTAButton
                 variant="primary"
@@ -60,39 +60,6 @@ export function Hero() {
               >
                 Watch Before / After Reels
               </CTAButton>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-6 pt-2 text-sm">
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  <div className="h-8 w-8 rounded-full bg-gradient-to-br from-[#00AEEF] to-[#6366F1] border-2 border-white text-[11px] font-semibold text-white flex items-center justify-center">
-                    YT
-                  </div>
-                  <div className="h-8 w-8 rounded-full bg-slate-900 text-[11px] font-semibold text-white border-2 border-white flex items-center justify-center">
-                    IG
-                  </div>
-                  <div className="h-8 w-8 rounded-full bg-slate-800 text-[11px] font-semibold text-white border-2 border-white flex items-center justify-center">
-                    TT
-                  </div>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-semibold text-[#0F172A]">50+ creators</span>
-                  <span className="text-[#6B7280] text-xs">trusting us with daily uploads</span>
-                </div>
-              </div>
-
-              <div className="h-10 w-px bg-gradient-to-b from-transparent via-[#CBD5F5] to-transparent hidden md:block" />
-
-              <div className="flex gap-6 text-xs md:text-sm text-[#6B7280]">
-                <div>
-                  <p className="font-semibold text-[#00AEEF] text-base md:text-lg">2.5M+</p>
-                  <p>organic views powered</p>
-                </div>
-                <div>
-                  <p className="font-semibold text-[#00AEEF] text-base md:text-lg">4x</p>
-                  <p>average watch‑time lift</p>
-                </div>
-              </div>
             </div>
           </div>
         </ScrollReveal>
