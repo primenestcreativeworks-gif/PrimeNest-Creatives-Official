@@ -26,7 +26,7 @@ export async function createBlogPost(formData: FormData) {
 
     if (uploadError) {
       console.error('Upload Error:', uploadError);
-      redirect(`/admin/blogs/new?error=${encodeURIComponent('Failed to upload image: ' + uploadError.message)}`);
+      return { error: 'Failed to upload image: ' + uploadError.message };
     }
 
     const { data: { publicUrl } } = supabase.storage
@@ -51,11 +51,12 @@ export async function createBlogPost(formData: FormData) {
 
   if (error) {
     console.error('Insert Error:', error);
-    redirect(`/admin/blogs/new?error=${encodeURIComponent('Failed to save to database: ' + error.message)}`);
+    return { error: 'Failed to save to database: ' + error.message };
   }
 
   revalidatePath('/admin/blogs');
   revalidatePath('/blog');
   revalidatePath('/');
-  redirect('/admin/blogs');
+  
+  return { success: true };
 }
