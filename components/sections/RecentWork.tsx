@@ -165,9 +165,9 @@ function CaseStudyCard({ item }: { item: typeof caseStudies[0] }) {
         {/* Inner Image Container - conforms to the image size */}
         <div className="relative rounded-[1rem] overflow-hidden bg-[#050816] border border-white/5 shadow-inner">
           <img
-            src={item.image}
+            src={(item as any).image_url || item.image}
             alt={item.client}
-            className="block w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px] max-w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            className="block w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px] max-w-full h-auto transition-transform duration-700 ease-out group-hover:scale-105"
           />
         </div>
       </div>
