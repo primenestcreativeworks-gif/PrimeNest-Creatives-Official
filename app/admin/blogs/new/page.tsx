@@ -1,8 +1,11 @@
 import { createBlogPost } from './actions';
 import Link from 'next/link';
 
-export default async function NewBlogPost({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
-  const { error } = await searchParams;
+export default function NewBlogPost({ searchParams }: { searchParams: { error?: string } | any }) {
+  // Ensure searchParams is handled safely whether it's an object or an unresolved promise in Next 15
+  const error = searchParams && typeof searchParams === 'object' && !('then' in searchParams) 
+    ? searchParams.error 
+    : undefined;
 
   return (
     <div className="max-w-4xl">

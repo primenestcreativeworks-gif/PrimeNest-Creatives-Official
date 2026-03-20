@@ -1,8 +1,10 @@
 import { createCaseStudy } from './actions';
 import Link from 'next/link';
 
-export default async function NewCaseStudy({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
-  const { error } = await searchParams;
+export default function NewCaseStudy({ searchParams }: { searchParams: { error?: string } | any }) {
+  const error = searchParams && typeof searchParams === 'object' && !('then' in searchParams) 
+    ? searchParams.error 
+    : undefined;
 
   return (
     <div className="max-w-3xl">
