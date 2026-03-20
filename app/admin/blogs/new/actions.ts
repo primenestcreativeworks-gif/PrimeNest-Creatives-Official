@@ -5,6 +5,8 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 export async function createBlogPost(formData: FormData) {
+  let redirectUrl = '/admin/blogs';
+
   try {
     const supabase = await createClient();
 
@@ -27,7 +29,8 @@ export async function createBlogPost(formData: FormData) {
 
       if (uploadError) {
         console.error('Upload Error:', uploadError);
-        return redirect(`/admin/blogs/new?error=${encodeURIComponent('Failed to upload image: ' + uploadError.message)}`);
+        redirectUrl = `/admin/blogs/new?error=${encodeURIComponent('Failed to upload image: ' + uploadError.message)}`;
+        throw new Error('handled_redirect');
       }
 
       const { data: { publicUrl } } = supabase.storage
@@ -52,7 +55,8 @@ export async function createBlogPost(formData: FormData) {
 
     if (error) {
       console.error('Insert Error:', error);
-      return redirect(`/admin/blogs/new?error=${encodeURIComponent('Failed to save to database: ' + error.message)}`);
+      redirectUrl = `/admin/blogs/new?error=${encodeURIComponent('Failed to save to database: ' + error.message)}`;
+      throw new Error('handled_redirect');
     }
 
     revalidatePath('/admin/blogs');
@@ -60,12 +64,11 @@ export async function createBlogPost(formData: FormData) {
     revalidatePath('/');
     
   } catch (err: any) {
-    if (err.message && err.message.includes('NEXT_REDIRECT')) {
-      throw err;
+    if (err.message !== 'handled_redirect') {
+      console.error('Unhandled action error:', err);
+      redirectUrl = `/admin/blogs/new?error=${encodeURIComponent('Critical error during save: ' + (err.message || 'Unknown error'))}`;
     }
-    console.error('Unhandled action error:', err);
-    return redirect(`/admin/blogs/new?error=${encodeURIComponent('Critcal error during save: ' + (err.message || 'Unknown error'))}`);
   }
   
-  redirect('/admin/blogs');
+  redirect(redirectUrl);
 }
