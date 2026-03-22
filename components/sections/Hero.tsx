@@ -88,7 +88,6 @@ export function Hero() {
                   autoPlay
                   loop
                   muted
-                  defaultMuted
                   playsInline
                 />
               </div>
@@ -108,7 +107,6 @@ export function Hero() {
                     autoPlay
                     loop
                     muted
-                    defaultMuted
                     playsInline
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-between p-3">

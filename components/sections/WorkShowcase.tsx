@@ -83,7 +83,6 @@ export function WorkShowcase() {
                         autoPlay
                         loop
                         muted
-                        defaultMuted
                         playsInline
                         preload="auto"
                       />
