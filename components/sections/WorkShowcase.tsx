@@ -7,37 +7,43 @@ const reels = [
     id: 1,
     name: 'Harsh Tiwari',
     role: 'Instagram Influencer',
-    src: 'https://res.cloudinary.com/dkenvppbz/video/upload/v1772698619/HR_REEL_19_JAN_boipfa.mp4',
+    src: 'https://www.youtube.com/embed/JmV2EddK77w?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=JmV2EddK77w&playsinline=1',
   },
   {
     id: 2,
     name: 'G.S Vision IAS',
     role: 'Coaching Institute Owner',
-    src: 'https://res.cloudinary.com/dkenvppbz/video/upload/SHOWCASE_REEL_01_1_awypwq.mp4',
+    src: 'https://www.youtube.com/embed/A9vcsGSf6yc?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=A9vcsGSf6yc&playsinline=1',
   },
   {
     id: 3,
     name: 'Vittshala',
     role: 'Investment Firm',
-    src: 'https://res.cloudinary.com/dkenvppbz/video/upload/vitshala_reel_4_feb_1_dquoop.mp4',
+    src: 'https://www.youtube.com/embed/05XAb947Oys?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=05XAb947Oys&playsinline=1',
   },
   {
     id: 4,
     name: 'Doon Tutorial',
     role: 'Coaching Institute',
-    src: 'https://res.cloudinary.com/dkenvppbz/video/upload/v1772546009/DT_REEL_22_JAN_2_ndspjl.mp4',
+    src: 'https://www.youtube.com/embed/RxCUxyxaIJQ?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=RxCUxyxaIJQ&playsinline=1',
   },
   {
     id: 5,
     name: 'Supriya Singh',
     role: 'Yoga Instructor (Instagram Influencer)',
-    src: 'https://res.cloudinary.com/dkenvppbz/video/upload/v1772546041/YOGA_REEL_1_cyo9mj.mp4',
+    src: 'https://www.youtube.com/embed/3WhdT7pKP60?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=3WhdT7pKP60&playsinline=1',
   },
   {
     id: 6,
     name: 'AI Powered Content',
     role: 'AI Visuals + AI Voiceovers',
-    src: 'https://res.cloudinary.com/dkenvppbz/video/upload/v1772545998/GS_VISION_AI_REEL_17Jan_qn8ziz.mp4',
+    src: 'https://www.youtube.com/embed/idOjHezHz0g?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=idOjHezHz0g&playsinline=1',
+  },
+  {
+    id: 7,
+    name: 'Divya',
+    role: 'Creator',
+    src: 'https://www.youtube.com/embed/7K70tXvcuvg?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=7K70tXvcuvg&playsinline=1',
   },
 ];
 
@@ -77,15 +83,14 @@ export function WorkShowcase() {
                     {/* Reel Card - 9:16 aspect ratio */}
                     <div className="relative w-48 sm:w-52 md:w-56 aspect-[9/16] rounded-3xl shadow-lg overflow-hidden bg-black transition-transform duration-300 group-hover:scale-105">
                       {/* Video */}
-                      <video
-                        src={reel.src}
-                        className="w-full h-full object-cover"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                      />
+                      <div className="absolute inset-0 pointer-events-none scale-[1.3] md:scale-[1.35] origin-center">
+                        <iframe
+                          src={reel.src}
+                          className="w-full h-full object-cover"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          title={reel.name}
+                        />
+                      </div>
 
                       {/* Overlay on hover */}
                       <div className="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors duration-300" />

@@ -44,16 +44,15 @@ export default function ShortFormContentPage() {
                     <p className="text-[11px] font-semibold text-slate-400 uppercase">
                       Before · Plain crop
                     </p>
-                    <div className="aspect-[9/16] rounded-xl overflow-hidden bg-slate-800">
-                      <video
-                        src="https://res.cloudinary.com/dkenvppbz/video/upload/v1772570286/%E0%A4%A1%E0%A5%8B%E0%A4%AD%E0%A4%BE%E0%A4%B2_%E0%A4%B8%E0%A4%B0_1_1_okzlgw.mp4"
-                        className="w-full h-full object-cover"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                      />
+                    <div className="aspect-[9/16] rounded-xl overflow-hidden bg-slate-800 relative pointer-events-none">
+                      <div className="absolute inset-0 scale-[1.3] origin-center">
+                        <iframe
+                          src="https://www.youtube.com/embed/6y5yYnHwE3E?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=6y5yYnHwE3E&playsinline=1"
+                          className="w-full h-full object-cover"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          title="Before video"
+                        />
+                      </div>
                     </div>
                     <p className="text-[11px] text-slate-400">
                       No captions, no structure, quick drop‑off.
@@ -64,16 +63,15 @@ export default function ShortFormContentPage() {
                       <p className="text-[11px] font-semibold text-orange-100 uppercase">
                         After · scroll‑stopping clip
                       </p>
-                      <div className="aspect-[9/16] rounded-xl overflow-hidden bg-slate-900/40 border border-white/10">
-                        <video
-                          src="https://res.cloudinary.com/dkenvppbz/video/upload/v1772824796/G.s_Vision_18_yta9gg.mp4"
-                          className="w-full h-full object-cover"
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          preload="auto"
-                        />
+                      <div className="aspect-[9/16] rounded-xl overflow-hidden bg-slate-900/40 border border-white/10 relative pointer-events-none">
+                        <div className="absolute inset-0 scale-[1.3] origin-center">
+                          <iframe
+                            src="https://www.youtube.com/embed/ji7qPlcx-m8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=ji7qPlcx-m8&playsinline=1"
+                            className="w-full h-full object-cover"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            title="After video"
+                          />
+                        </div>
                       </div>
                       <p className="text-[11px] text-orange-100/90">
                         Built to win the first 3 seconds and push viewers to your link.
