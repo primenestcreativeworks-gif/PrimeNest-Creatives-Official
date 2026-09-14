@@ -1,6 +1,7 @@
 'use client';
 
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { BackgroundVideo } from '@/components/BackgroundVideo';
 
 const reels = [
   {
@@ -84,12 +85,7 @@ export function WorkShowcase() {
                     <div className="relative w-48 sm:w-52 md:w-56 aspect-[9/16] rounded-3xl shadow-lg overflow-hidden bg-black transition-transform duration-300 group-hover:scale-105">
                       {/* Video */}
                       <div className="absolute inset-0 pointer-events-none scale-[1.3] md:scale-[1.35] origin-center">
-                        <iframe
-                          src={reel.src}
-                          className="w-full h-full object-cover"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          title={reel.name}
-                        />
+                        <BackgroundVideo src={reel.src} title={reel.name} />
                       </div>
 
                       {/* Overlay on hover */}

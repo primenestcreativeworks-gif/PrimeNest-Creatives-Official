@@ -2,6 +2,7 @@
 
 import { CTAButton } from '@/components/CTAButton';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { BackgroundVideo } from '@/components/BackgroundVideo';
 
 export function Hero() {
   return (
@@ -83,10 +84,8 @@ export function Hero() {
               </div>
               <div className="aspect-video rounded-2xl overflow-hidden bg-slate-900 relative pointer-events-none">
                 <div className="absolute inset-0 scale-[1.25] origin-center">
-                  <iframe
+                  <BackgroundVideo
                     src="https://www.youtube.com/embed/j0fsCUTOFwo?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=j0fsCUTOFwo&playsinline=1"
-                    className="w-full h-full object-cover"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     title="Playback video"
                   />
                 </div>
@@ -102,10 +101,8 @@ export function Hero() {
               <div className="w-24 md:w-28 aspect-[9/16] rounded-3xl bg-white shadow-[0_24px_60px_rgba(15,23,42,0.45)] border border-slate-100 overflow-hidden transform rotate-[8deg]">
                 <div className="h-full w-full relative">
                   <div className="absolute inset-0 pointer-events-none scale-[1.3] origin-center">
-                    <iframe
+                    <BackgroundVideo
                       src="https://www.youtube.com/embed/7K70tXvcuvg?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=7K70tXvcuvg&playsinline=1"
-                      className="w-full h-full object-cover"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       title="Divya Reel"
                     />
                   </div>

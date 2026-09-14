@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { BackgroundVideo } from '@/components/BackgroundVideo';
 
 const longFormFeatures = [
   'Copyright‑safe editing and music selection',
@@ -13,7 +13,6 @@ const longFormFeatures = [
 ];
 
 export default function LongFormEditPage() {
-  const [showLongFormVideo, setShowLongFormVideo] = useState(false);
   return (
     <>
       <Header />
@@ -47,37 +46,13 @@ export default function LongFormEditPage() {
                     <p className="text-[11px] font-semibold text-slate-300 uppercase">
                       PrimeNest long‑form edit example
                     </p>
-                    <div className="aspect-video rounded-xl overflow-hidden bg-slate-800 relative">
-                      {!showLongFormVideo && (
-                        <button
-                          type="button"
-                          onClick={() => setShowLongFormVideo(true)}
-                          className="absolute inset-0 w-full h-full focus:outline-none group"
-                        >
-                          <img
-                            src="/Screenshot%202026-03-08%20204440.png"
-                            alt="PrimeNest long-form edit cover"
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute bottom-4 left-4 flex items-center gap-2">
-                            <span className="px-3 py-1 rounded-full bg-white/95 text-slate-900 text-[11px] md:text-xs font-semibold tracking-wide uppercase shadow-sm transform -rotate-2 group-hover:-rotate-3 group-hover:-translate-y-0.5 transition-transform">
-                              tap to play
-                            </span>
-                            <span className="text-white text-xl md:text-2xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)] transform -rotate-12 group-hover:-rotate-6 transition-transform">
-                              ➜
-                            </span>
-                          </div>
-                        </button>
-                      )}
-                      {showLongFormVideo && (
-                        <iframe
-                          src="https://www.youtube.com/embed/bKZGh1adM0o?rel=0&si=J1a6h0VxygK9Z0BH&autoplay=1"
+                    <div className="aspect-video rounded-xl overflow-hidden bg-slate-800 relative pointer-events-none">
+                      <div className="absolute inset-0 scale-[1.3] origin-center">
+                        <BackgroundVideo
+                          src="https://www.youtube.com/embed/bKZGh1adM0o?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=bKZGh1adM0o&playsinline=1"
                           title="PrimeNest long-form edit"
-                          className="w-full h-full"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                          allowFullScreen
                         />
-                      )}
+                      </div>
                     </div>
                     <p className="text-[11px] text-slate-400">
                       A real client episode showcasing our pacing, visuals and sound design.

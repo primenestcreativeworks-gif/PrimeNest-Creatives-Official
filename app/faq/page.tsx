@@ -11,7 +11,7 @@ const faqCategories = [
     faqs: [
       {
         question: "How much do your services cost?",
-        answer: "We offer flexible packages based on your content needs. Indian creators typically start from ₹20,000/month and international clients from $799/month. Every project is unique — book a free strategy call and we'll put together a custom quote based on your content volume and goals."
+        answer: "Pricing depends on your content volume and the package that fits best — we put together a tailored quote once we understand your needs. Book a free strategy call and we'll walk you through options and pricing for your specific content."
       },
       {
         question: "Do you charge per video or on a monthly retainer?",
@@ -19,11 +19,11 @@ const faqCategories = [
       },
       {
         question: "Is there a minimum contract period?",
-        answer: "We ask for a minimum of 1 month to get started. Most of our clients stay with us long-term because the results speak for themselves. There is no lock-in after the first month — you can scale up, scale down, or pause with 15 days notice."
+        answer: "Domestic (India) engagements start with a 1-month minimum and no lock-in after that — you can scale up, scale down, or pause with 15 days' notice. International engagements begin with a one-month pilot at our standard rate, then convert to a 3-month retainer with your rate locked for 12 months and 30 days' notice after the initial term."
       },
       {
         question: "Do you offer a trial before I commit?",
-        answer: "Yes! For serious prospects, we offer one complimentary trial edit so you can see the quality of our work firsthand. No commitment required. If you love it, we talk packages. If not, no hard feelings."
+        answer: "Yes — for serious prospects, we offer a trial edit for a small fee ($10–$40 depending on scope) so you can see the quality of our work firsthand before committing to a package. If you love it, we talk packages. If not, no hard feelings."
       }
     ]
   },
@@ -57,7 +57,7 @@ const faqCategories = [
       },
       {
         question: "Can I see examples of your past work?",
-        answer: "Absolutely. Visit the Work section of our website to see reels and case studies from our existing clients across coaching, fitness, and business niches. You can also request a niche-specific portfolio on our strategy call."
+        answer: "Absolutely. Visit the Work section of our website to see reels and case studies from our existing clients across coaching, finance, and podcast niches. You can also request a niche-specific portfolio on our strategy call."
       },
       {
         question: "Do you also write captions, hooks, and scripts?",

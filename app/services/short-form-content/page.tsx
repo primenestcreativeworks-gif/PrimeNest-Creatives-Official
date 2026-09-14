@@ -3,6 +3,7 @@
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { BackgroundVideo } from '@/components/BackgroundVideo';
 
 const shortFormFeatures = [
   'Hook‑first openings that stop the scroll',
@@ -46,10 +47,8 @@ export default function ShortFormContentPage() {
                     </p>
                     <div className="aspect-[9/16] rounded-xl overflow-hidden bg-slate-800 relative pointer-events-none">
                       <div className="absolute inset-0 scale-[1.3] origin-center">
-                        <iframe
+                        <BackgroundVideo
                           src="https://www.youtube.com/embed/6y5yYnHwE3E?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=6y5yYnHwE3E&playsinline=1"
-                          className="w-full h-full object-cover"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                           title="Before video"
                         />
                       </div>
@@ -65,10 +64,8 @@ export default function ShortFormContentPage() {
                       </p>
                       <div className="aspect-[9/16] rounded-xl overflow-hidden bg-slate-900/40 border border-white/10 relative pointer-events-none">
                         <div className="absolute inset-0 scale-[1.3] origin-center">
-                          <iframe
+                          <BackgroundVideo
                             src="https://www.youtube.com/embed/ji7qPlcx-m8?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=ji7qPlcx-m8&playsinline=1"
-                            className="w-full h-full object-cover"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             title="After video"
                           />
                         </div>
