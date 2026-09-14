@@ -137,7 +137,7 @@ export function Footer() {
                 <span className="text-xs text-slate-500">9 AM – 9 PM IST</span>
               </a>
               <a
-                href="mailto:primenestcreativesworks@gmail.com"
+                href="mailto:primenestcreativeworks@gmail.com"
                 className="flex items-center justify-between gap-2 hover:text-[#00AEEF] transition-colors"
               >
                 <span>Email our team</span>

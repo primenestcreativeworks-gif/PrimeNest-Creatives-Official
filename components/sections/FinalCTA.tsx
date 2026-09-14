@@ -65,7 +65,7 @@ export function FinalCTA() {
 
                   {/* Email */}
                   <a
-                    href="mailto:primenestcreativesworks@gmail.com"
+                    href="mailto:primenestcreativeworks@gmail.com"
                     className="group flex flex-col items-center justify-center gap-2 px-6 py-4 bg-white border border-[#E2E8F0] rounded-2xl hover:border-[#00AEEF] transition-all duration-300 hover:shadow-xl"
                   >
                     <div className="text-2xl">✉️</div>
