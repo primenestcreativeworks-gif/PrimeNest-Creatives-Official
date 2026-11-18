@@ -1,17 +1,13 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import { Toaster } from 'sonner';
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
-  title: 'PrimeNest Creatives | Premium Video Editing Agency for YouTubers & Creators',
-  description: 'India-based premium video editing agency specialising in short form, long form and podcast editing for creators worldwide.',
-  generator: 'v0.app',
+  title: 'PrimeNest Creatives | Your end-to-end content post-production team',
+  description: 'Post-production specialists. Editing, not filming. We serve brands, founders, creators, coaches, educators, finance creators, and podcasters with YouTube long-form, shorts, podcasts, and packaging.',
+  generator: 'PrimeNest Creatives',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
@@ -32,18 +28,27 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="font-sans antialiased">
+    <html lang="en" className="dark scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-sans antialiased bg-[#0A0A0A] text-white selection:bg-[#00AAFF]/30 selection:text-[#00AAFF]">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
+          forcedTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
         >
           {children}
         </ThemeProvider>
         <Analytics />
-        <Toaster position="top-center" richColors />
+        <Toaster position="top-center" richColors theme="dark" />
       </body>
     </html>
   )

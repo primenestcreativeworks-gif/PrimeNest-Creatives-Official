@@ -1,113 +1,163 @@
 'use client';
 
-import { Timeline } from '@/components/ui/timeline';
+import React from 'react';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import { CTAButton } from '@/components/CTAButton';
+import { motion } from 'framer-motion';
+import { Video, CalendarCheck, ShieldCheck, RefreshCw, Clock, UserCheck, ArrowRight } from 'lucide-react';
 
-// ... existing steps array ...
 const steps = [
   {
     number: '01',
-    title: 'Discovery Call',
-    description: 'Understand your brand, goals, and content style. We dig deep to find the unique angle that sets you apart.',
-    icon: '💬',
-    accent: 'from-blue-500/20 to-cyan-400/20',
-    borderHover: 'hover:border-blue-400/50 hover:shadow-blue-500/10'
+    icon: Video,
+    title: 'Trial Edit',
+    description:
+      'Send us a clip. We edit it so you can judge our work on your own footage before committing to any package.',
+    highlight: 'Zero risk · Test our cut quality',
   },
   {
     number: '02',
-    title: 'Content Strategy',
-    description: 'Create a distinct roadmap tailored to your audience. We plan the hooks, pacing, and visual style.',
-    icon: '🗺️',
-    accent: 'from-purple-500/20 to-pink-400/20',
-    borderHover: 'hover:border-purple-400/50 hover:shadow-purple-500/10'
+    icon: CalendarCheck,
+    title: 'Pilot Month',
+    description:
+      'A full month of your content at real volume, with no long-term lock-in. We build your editing templates and communication rhythm.',
+    highlight: 'Volume test · Full post-pipeline',
   },
   {
     number: '03',
-    title: 'Production',
-    description: 'Bring your vision to life with premium, high-retention editing, captivating graphics, and flawless sound design.',
-    icon: '🎬',
-    accent: 'from-orange-500/20 to-red-400/20',
-    borderHover: 'hover:border-orange-400/50 hover:shadow-orange-500/10'
-  },
-  {
-    number: '04',
-    title: 'Optimization',
-    description: 'Fine-tune every millisecond for maximum engagement, CTR, and algorithmic reach across platforms.',
-    icon: '⚡',
-    accent: 'from-green-500/20 to-emerald-400/20',
-    borderHover: 'hover:border-emerald-400/50 hover:shadow-emerald-500/10'
-  },
-  {
-    number: '05',
-    title: 'Launch & Support',
-    description: 'Deploy content, analyze the results, and provide ongoing iteration support to ensure compounding growth.',
-    icon: '🚀',
-    accent: 'from-[#00AEEF]/20 to-blue-400/20',
-    borderHover: 'hover:border-[#00AEEF]/50 hover:shadow-[#00AEEF]/10'
+    icon: ShieldCheck,
+    title: 'Ongoing Partnership',
+    description:
+      'If it works, we move to a monthly retainer with a locked rate and a priority queue for your scheduled uploads.',
+    highlight: 'Locked rate · Dedicated queue',
   },
 ];
 
+const badges = [
+  { icon: RefreshCw, label: '2 revision rounds on every deliverable' },
+  { icon: Clock, label: 'Predictable turnaround' },
+  { icon: UserCheck, label: 'One point of contact' },
+];
+
 export function Process() {
-  const data = steps.map((step, index) => ({
-    title: (
-      <div className="flex flex-col gap-2">
-        <span className="text-sm font-bold text-[#00AEEF] uppercase tracking-widest pl-1">
-          Step {step.number}
-        </span>
-      </div>
-    ),
-    content: (
-      <div 
-        className={`group relative bg-white/60 backdrop-blur-xl rounded-[2rem] p-8 md:p-10 border border-white/80 shadow-[0_8px_32px_0_rgba(0,174,239,0.05)] overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:bg-white/80 hover:border-[#00AEEF]/20 mb-8 w-full`}
-      >
-        {/* Background massive number */}
-        <div className="absolute -top-6 -right-4 md:-top-10 md:-right-8 text-[8rem] md:text-[12rem] font-black text-slate-50 opacity-60 mix-blend-multiply select-none pointer-events-none group-hover:scale-110 transition-transform duration-700 ease-out">
-          {step.number}
-        </div>
-
-        {/* Top-right subtle gradient glow that expands on hover */}
-        <div className={`absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br ${step.accent} rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`} />
-
-        <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
-          <div className="flex-shrink-0 w-16 h-16 bg-white border border-slate-100/50 shadow-[0_4px_20px_0_rgba(0,0,0,0.05)] rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-all duration-500 ease-out z-10">
-            {step.icon}
-          </div>
-          
-          <div className="pt-2 w-full">
-            <div className="flex items-center justify-center sm:justify-start gap-3 mb-2 flex-wrap">
-              <h3 className="text-2xl font-bold text-[#1A1A1A]">
-                {step.title}
-              </h3>
-            </div>
-            <p className="text-slate-600 leading-relaxed text-lg">
-              {step.description}
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }));
-
   return (
-    <section className="w-full bg-[#FAFBFC] py-24 md:py-32 relative overflow-hidden font-sans">
-      {/* Decorative background blur */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-[#00AEEF]/5 to-transparent rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3" />
-      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-[#00AEEF]/5 to-transparent rounded-full blur-3xl pointer-events-none -translate-x-1/2" />
-      
+    <section id="process" className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-24 md:py-32 relative overflow-hidden grain-overlay border-t border-white/5">
+      {/* Background ambient glow */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#00AAFF]/6 blur-[140px] rounded-full" />
+
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="px-4 md:px-8 lg:px-16 mb-20 flex flex-col items-center text-center">
-          <span className="inline-block text-sm font-semibold text-[#00AEEF] uppercase tracking-widest mb-4">
-            How we work
+        {/* Section Header */}
+        <ScrollReveal className="mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-3">
+            Onboarding & Execution
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1A1A1A] mb-6 leading-[1.1] max-w-3xl">
-            A proven formula for growth.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
+            How We{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
+              Work Together.
+            </span>
           </h2>
-          <p className="text-lg md:text-xl text-[#666666] leading-relaxed mb-8 max-w-2xl">
-            We don't just edit videos. We build a streamlined, collaborative pipeline designed to elevate your brand and capture attention at scale.
+          <p className="mt-4 text-base sm:text-lg text-white/60 leading-relaxed font-normal">
+            No endless sales cycles. We start with real footage and prove our value on your timeline.
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#00AEEF] to-transparent rounded-full opacity-50" />
+        </ScrollReveal>
+
+        {/* 3-Step Timeline with Animated Connecting Line */}
+        <div className="relative mb-16 md:mb-20">
+          {/* Animated Connecting Line on Desktop */}
+          <div className="hidden md:block absolute top-[68px] left-[15%] right-[15%] h-[2px] z-0">
+            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
+              <motion.line
+                x1="0"
+                y1="0"
+                x2="100%"
+                y2="0"
+                stroke="rgba(0, 170, 255, 0.4)"
+                strokeWidth="2"
+                strokeDasharray="6 6"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 1.2, ease: 'easeInOut' }}
+              />
+            </svg>
+          </div>
+
+          {/* 3 Step Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-10">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              return (
+                <ScrollReveal key={step.number} delay={index * 150}>
+                  <div className="glass-card glass-card-hover rounded-3xl p-8 md:p-10 h-full flex flex-col justify-between group relative overflow-hidden">
+                    {/* Step Number Badge */}
+                    <div>
+                      <div className="flex items-center justify-between mb-8">
+                        <div className="w-14 h-14 rounded-2xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-[#00AAFF] shadow-lg group-hover:border-[#00AAFF]/40 group-hover:scale-105 transition-all duration-300">
+                          <Icon className="w-7 h-7" />
+                        </div>
+                        <span className="text-3xl font-black text-white/20 tracking-tighter group-hover:text-[#00AAFF]/40 transition-colors">
+                          {step.number}
+                        </span>
+                      </div>
+
+                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#00AAFF] transition-colors">
+                        {step.title}
+                      </h3>
+                      <p className="text-white/65 text-sm md:text-base leading-relaxed mb-6">
+                        {step.description}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-white/5">
+                      <span className="text-xs font-semibold text-[#00AAFF] tracking-wide flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#00AAFF]" />
+                        {step.highlight}
+                      </span>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
         </div>
 
-        <Timeline data={data} />
+        {/* 3 Trust Badges */}
+        <ScrollReveal delay={200} className="mb-14">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {badges.map((badge) => {
+              const BadgeIcon = badge.icon;
+              return (
+                <div
+                  key={badge.label}
+                  className="rounded-2xl bg-white/[0.03] border border-white/10 p-4 flex items-center justify-center text-center gap-3"
+                >
+                  <BadgeIcon className="w-4 h-4 text-[#00AAFF] shrink-0" />
+                  <span className="text-xs sm:text-sm font-semibold text-white/80">
+                    {badge.label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </ScrollReveal>
+
+        {/* Section CTA */}
+        <ScrollReveal delay={300} className="text-center">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/[0.02] border border-white/10 rounded-2xl p-4 sm:p-2 sm:pl-6 backdrop-blur-md">
+            <span className="text-sm md:text-base font-semibold text-white">
+              Send us one video. See what it can become.
+            </span>
+            <CTAButton
+              variant="primary"
+              size="md"
+              href="#contact"
+              className="w-full sm:w-auto"
+            >
+              Get a Free Trial Edit
+            </CTAButton>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

@@ -1,173 +1,153 @@
 'use client';
 
 import Link from 'next/link';
+import { Mail, Phone, Globe, MessageSquare, Instagram, ArrowUp } from 'lucide-react';
 
 export function Footer() {
+  const scrollToTop = () => {
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="w-full bg-[#020617] text-slate-100 mt-16">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 pt-16 pb-10">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-10 md:gap-14 mb-12">
-          {/* Brand */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <div className="relative h-12 w-auto">
+    <footer className="w-full bg-[#070707] text-white border-t border-white/10 relative overflow-hidden grain-overlay">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 pt-16 md:pt-20 pb-12 relative z-10">
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 mb-14">
+          {/* Brand Info (5 cols) */}
+          <div className="md:col-span-5 space-y-5">
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <div className="relative h-10 w-auto">
                 <img
                   src="/Extremist - 9 Typography Designs_ Powerful Words-Photoroom.png"
-                  alt="PrimeNest"
-                  className="h-full w-auto"
+                  alt="PrimeNest Creatives"
+                  className="h-full w-auto filter invert brightness-200 opacity-95 transition-transform duration-300 group-hover:scale-105"
+                  onError={(e) => {
+                    const target = e.target as HTMLElement;
+                    target.style.display = 'none';
+                  }}
                 />
               </div>
-              <div>
-                <p className="text-xs font-semibold tracking-[0.22em] uppercase text-slate-400">
-                  PrimeNest Creative
-                </p>
-                <p className="font-semibold text-base text-white">
-                  Strategic content, done‑for‑you.
-                </p>
-              </div>
-            </div>
-            <p className="text-sm text-slate-400 max-w-md leading-relaxed">
-              We partner with creators and brands to build long‑form episodes, short‑form clips,
-              and channel systems that compound views month after month.
-            </p>
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400">
-              <span className="inline-flex items-center gap-1 rounded-full border border-slate-700 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                <span>Currently onboarding new clients</span>
+              <span className="font-bold text-xl tracking-tight text-white group-hover:text-[#00AAFF] transition-colors">
+                PrimeNest <span className="text-[#00AAFF]">Creatives</span>
               </span>
-              <span className="text-slate-500">Based in India · Working worldwide</span>
+            </Link>
+
+            <p className="text-sm text-white/60 max-w-sm leading-relaxed">
+              Your end-to-end content post-production team. Post-production specialists dedicated to YouTube long-form, high-retention shorts, video podcasts, and high-CTR packaging.
+            </p>
+
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3.5 py-1 text-xs text-white/70">
+              <span className="h-2 w-2 rounded-full bg-[#00AAFF]" />
+              <span>India-based studio · Serving global creators</span>
             </div>
           </div>
 
-          {/* Services & Company */}
-          <div>
-            <h4 className="font-semibold text-xs tracking-[0.22em] uppercase text-slate-400 mb-4">
-              Company & Services
+          {/* Quick Navigation (3 cols) */}
+          <div className="md:col-span-3 space-y-4">
+            <h4 className="font-bold text-xs uppercase tracking-[0.2em] text-[#00AAFF]">
+              Capabilities
             </h4>
-            <ul className="space-y-2.5 text-sm text-slate-300">
+            <ul className="space-y-2.5 text-sm text-white/70">
               <li>
-                <Link
-                  href="/about"
-                  className="font-bold text-white hover:text-[#00AEEF] transition-colors"
-                >
-                  About PrimeNest
-                </Link>
+                <a href="#services" className="hover:text-[#00AAFF] transition-colors">
+                  Long-form YouTube Editing
+                </a>
               </li>
               <li>
-                <Link
-                  href="/faq"
-                  className="font-bold text-white hover:text-[#00AEEF] transition-colors"
-                >
-                  Questions / FAQ
-                </Link>
+                <a href="#services" className="hover:text-[#00AAFF] transition-colors">
+                  Thumbnails & Packaging
+                </a>
               </li>
               <li>
-                <Link
-                  href="/blog"
-                  className="font-bold text-white hover:text-[#00AEEF] transition-colors"
-                >
-                  Insights / Blog
-                </Link>
-              </li>
-              <li className="pt-2 pb-1 mb-2 border-b border-slate-800" />
-              <li>
-                <Link
-                  href="/services/long-form-edit"
-                  className="hover:text-[#00AEEF] transition-colors"
-                >
-                  Long‑form video editing
-                </Link>
+                <a href="#services" className="hover:text-[#00AAFF] transition-colors">
+                  Short-form Content & Reels
+                </a>
               </li>
               <li>
-                <Link
-                  href="/services/short-form-content"
-                  className="hover:text-[#00AEEF] transition-colors"
-                >
-                  Short‑form content & reels
-                </Link>
+                <a href="#services" className="hover:text-[#00AAFF] transition-colors">
+                  Content Ideation Systems
+                </a>
               </li>
               <li>
-                <Link
-                  href="/services/podcast-editing"
-                  className="hover:text-[#00AEEF] transition-colors"
-                >
-                  Podcast editing & repurposing
-                </Link>
+                <a href="#work" className="hover:text-[#00AAFF] transition-colors">
+                  Content Showcase
+                </a>
               </li>
               <li>
-                <Link
-                  href="/services/social-media-handling"
-                  className="hover:text-[#00AEEF] transition-colors"
-                >
-                  Social media handling
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services/youtube-channel-management"
-                  className="hover:text-[#00AEEF] transition-colors"
-                >
-                  YouTube channel management
-                </Link>
+                <a href="#process" className="hover:text-[#00AAFF] transition-colors">
+                  How We Work
+                </a>
               </li>
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold text-xs tracking-[0.22em] uppercase text-slate-400 mb-4">
-              Contact
+          {/* Direct Contact Coordinates (4 cols) */}
+          <div className="md:col-span-4 space-y-4">
+            <h4 className="font-bold text-xs uppercase tracking-[0.2em] text-[#00AAFF]">
+              Direct Contact
             </h4>
-            <div className="space-y-3 text-sm text-slate-300">
-              <a
-                href="https://web.whatsapp.com/send?phone=917217207811"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between gap-2 hover:text-[#00AEEF] transition-colors"
-              >
-                <span>WhatsApp us</span>
-                <span className="text-xs text-slate-500">Fastest response</span>
-              </a>
+            <div className="space-y-3 text-sm text-white/70">
               <a
                 href="tel:+917217207811"
-                className="flex items-center justify-between gap-2 hover:text-[#00AEEF] transition-colors"
+                className="flex items-center gap-3 hover:text-white transition-colors group"
               >
-                <span>Book a quick call</span>
-                <span className="text-xs text-slate-500">9 AM – 9 PM IST</span>
+                <Phone className="w-4 h-4 text-[#00AAFF] shrink-0" />
+                <span>+91-7217207811</span>
               </a>
+
               <a
                 href="mailto:primenestcreativeworks@gmail.com"
-                className="flex items-center justify-between gap-2 hover:text-[#00AEEF] transition-colors"
+                className="flex items-center gap-3 hover:text-white transition-colors group"
               >
-                <span>Email our team</span>
-                <span className="text-xs text-slate-500">We reply within 24 hours</span>
+                <Mail className="w-4 h-4 text-[#00AAFF] shrink-0" />
+                <span className="break-all">primenestcreativeworks@gmail.com</span>
               </a>
-              <p className="pt-3 text-xs text-slate-500">India · Remote‑first studio</p>
 
-              <div className="flex items-center gap-3 pt-3">
+              <a
+                href="https://primenestcreatives.com"
+                className="flex items-center gap-3 hover:text-white transition-colors group"
+              >
+                <Globe className="w-4 h-4 text-[#00AAFF] shrink-0" />
+                <span>primenestcreatives.com</span>
+              </a>
+
+              <div className="pt-2 flex items-center gap-3">
                 <a
                   href="https://www.instagram.com/primenestcreatives"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-8 w-8 rounded-full bg-slate-800 flex items-center justify-center text-[13px] hover:bg-[#00AEEF] transition-colors"
+                  className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-[#00AAFF] hover:border-[#00AAFF]/40 transition-colors"
                   aria-label="Instagram"
                 >
-                  ig
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://wa.me/917217207811"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-[#00AAFF] hover:border-[#00AAFF]/40 transition-colors"
+                  aria-label="WhatsApp"
+                >
+                  <MessageSquare className="w-4 h-4" />
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-slate-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} PrimeNest Creative. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <a href="#home" className="hover:text-slate-300 transition-colors">
-              Back to top
-            </a>
-          </div>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
+          <p>© {new Date().getFullYear()} PrimeNest Creatives. All rights reserved.</p>
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="flex items-center gap-1.5 hover:text-[#00AAFF] transition-colors cursor-pointer"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
     </footer>

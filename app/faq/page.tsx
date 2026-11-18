@@ -4,168 +4,150 @@ import { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { CTAButton } from '@/components/CTAButton';
+import { ChevronDown } from 'lucide-react';
 
 const faqCategories = [
   {
-    title: "💰 Pricing & Packages",
+    title: 'Pricing & Retainers',
     faqs: [
       {
-        question: "How much do your services cost?",
-        answer: "Pricing depends on your content volume and the package that fits best — we put together a tailored quote once we understand your needs. Book a free strategy call and we'll walk you through options and pricing for your specific content."
+        question: 'How do you charge for your services?',
+        answer:
+          'We work on transparent, predictable monthly retainers tailored to your upload frequency. This guarantees a locked rate, dedicated queue slots, and a specialized team that knows your brand inside out. No surprise invoices.',
       },
       {
-        question: "Do you charge per video or on a monthly retainer?",
-        answer: "We work primarily on monthly retainers — this means consistent delivery, consistent pricing, and a dedicated editor who understands your brand deeply. We find this works far better than per-video pricing for creators who upload regularly."
+        question: 'Do you offer a trial before committing?',
+        answer:
+          'Yes. We offer a 100% free trial edit on your own footage. You send us a raw clip, we edit it to your desired standard, and you judge the quality and turnaround before signing up for a pilot month.',
       },
       {
-        question: "Is there a minimum contract period?",
-        answer: "Domestic (India) engagements start with a 1-month minimum and no lock-in after that — you can scale up, scale down, or pause with 15 days' notice. International engagements begin with a one-month pilot at our standard rate, then convert to a 3-month retainer with your rate locked for 12 months and 30 days' notice after the initial term."
+        question: 'Is there a long-term lock-in?',
+        answer:
+          'No lock-in. Engagements begin with a trial edit and a one-month pilot at real volume. If you love the workflow, we transition to an ongoing monthly retainer that you can pause or adjust with 15 days notice.',
       },
-      {
-        question: "Do you offer a trial before I commit?",
-        answer: "Yes — for serious prospects, we offer a trial edit for a small fee ($10–$40 depending on scope) so you can see the quality of our work firsthand before committing to a package. If you love it, we talk packages. If not, no hard feelings."
-      }
-    ]
+    ],
   },
   {
-    title: "⚡ Turnaround Time",
+    title: 'Turnaround & Volume',
     faqs: [
       {
-        question: "How quickly will I receive my edited videos?",
-        answer: "For short-form content (Reels, Shorts, TikToks) — we deliver within 24 hours of receiving raw footage. For long-form videos (YouTube, podcasts) — delivery is within 48–72 hours depending on length and complexity. We always communicate clearly if timelines shift."
+        question: 'What is your typical turnaround time?',
+        answer:
+          'For short-form reels and shorts: 24 to 48 hours from receiving raw footage. For full long-form YouTube episodes and podcasts: 48 to 72 hours depending on motion graphics intensity and runtime.',
       },
       {
-        question: "What if I need something urgently?",
-        answer: "We understand content is time-sensitive. For urgent deliveries (same-day or next few hours), we offer rush editing at an additional charge. Reach out on WhatsApp and we'll do our best to accommodate."
+        question: 'How many revision rounds are included?',
+        answer:
+          'Every deliverable comes with 2 structured revision rounds. Because we dial in your brand guidelines and editing templates during the trial cut, most deliverables are approved on v1 or v2.',
       },
       {
-        question: "Do you work on weekends and Indian holidays?",
-        answer: "We work Monday to Friday, 9 AM – 9 PM IST. For weekend uploads, we plan ahead — all weekend content is pre-edited and ready to go by Friday evening. This means your audience never waits, and our team stays fresh and focused all week. It’s a system that works better for everyone."
-      }
-    ]
+        question: 'How do we communicate and send footage?',
+        answer:
+          'You get one dedicated point of contact. We communicate via a streamlined Slack or WhatsApp channel, and footage is shared via Google Drive, Dropbox, or Frame.io with time-stamped feedback.',
+      },
+    ],
   },
   {
-    title: "🎬 Quality & Style",
+    title: 'Style & Niche Focus',
     faqs: [
       {
-        question: "How do you match my editing style and brand?",
-        answer: "Before we begin, we spend time understanding your brand — your tone, colour palette, fonts, music taste, and the creators you admire. We study your existing content and reference videos you share. Most clients say it feels like their editor has been with them for years — from month one."
+        question: 'How do you match my channel’s pacing and aesthetic?',
+        answer:
+          'During onboarding, we break down your best-performing past videos, study benchmark reference channels you admire, and build a channel style guide covering typography, pacing, color grading, sound beds, and hook structure.',
       },
       {
-        question: "What editing software do you use?",
-        answer: "We primarily work in Adobe Premiere Pro and After Effects for professional-grade output. We also work with DaVinci Resolve for colour-heavy projects. Final deliverables are in whatever format and resolution you need."
+        question: 'What niches do you specialize in?',
+        answer:
+          'We specialize in post-production for brands, founders, creators, coaches, educators, finance creators, and podcasters. We deliberately do not take on daily vlogs, flashy hype edits, or fitness content.',
       },
-      {
-        question: "Can I see examples of your past work?",
-        answer: "Absolutely. Visit the Work section of our website to see reels and case studies from our existing clients across coaching, finance, and podcast niches. You can also request a niche-specific portfolio on our strategy call."
-      },
-      {
-        question: "Do you also write captions, hooks, and scripts?",
-        answer: "Yes — scripting and hook writing is part of our offering. We can help you write punchy hooks, structure your video for maximum watch-time, and suggest caption formats that drive saves and shares. This is available as an add-on or as part of full-service packages."
-      }
-    ]
+    ],
   },
-  {
-    title: "💬 Communication & Revisions",
-    faqs: [
-      {
-        question: "How many revisions are included?",
-        answer: "Every video comes with 2 rounds of minor revisions included — things like music change, colour tweak, text edit, or trimming. Major revisions (restructuring the entire edit or changing the concept) are quoted separately. We define this clearly in your onboarding agreement so there are no surprises."
-      },
-      {
-        question: "How do we communicate during the project?",
-        answer: "We keep things simple. Primary communication is over WhatsApp for quick updates and approvals. For file sharing we use Google Drive or WeTransfer. You'll always know the status of your content — no chasing required."
-      },
-      {
-        question: "What if I'm not happy with the final edit?",
-        answer: "We work until you're satisfied within the agreed revision rounds. If something isn't right, tell us specifically what to change and we'll fix it — fast. Our goal is a long-term relationship, not a one-time transaction."
-      },
-      {
-        question: "Will I be working with the same editor every time?",
-        answer: "Yes. When you onboard with PrimeNest, you get one dedicated editor who learns your brand inside out. You won't be passed around between different people. Consistency is the foundation of great content."
-      },
-      {
-        question: "I'm an international creator — will time zones be an issue?",
-        answer: "Not at all. We work with creators across the US, UK, Australia, and the Middle East. We operate 9 AM – 9 PM IST and structure delivery schedules around your upload times. Most international clients find our turnaround actually faster than local editors they've worked with."
-      }
-    ]
-  }
 ];
 
-export default function FAQPage() {
-  const [openIndex, setOpenIndex] = useState<string | null>(null);
+export function FAQPage() {
+  const [openIndex, setOpenIndex] = useState<string | null>('0-0');
 
-  const toggleAccordion = (categoryId: number, faqId: number) => {
-    const id = `${categoryId}-${faqId}`;
+  const toggleAccordion = (catIndex: number, faqIndex: number) => {
+    const id = `${catIndex}-${faqIndex}`;
     setOpenIndex(openIndex === id ? null : id);
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 selection:bg-[#00AEEF]/20">
+    <div className="min-h-screen bg-[#0A0A0A] text-white selection:bg-[#00AAFF]/30 selection:text-[#00AAFF] grain-overlay">
       <Header />
-      
+
       <main className="w-full pt-32 pb-24 relative overflow-hidden">
-        {/* Subtle Background Glows */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-40 left-0 w-[600px] h-[600px] bg-[#00AEEF]/5 rounded-full blur-[120px] pointer-events-none" />
+        {/* Soft Background Glows */}
+        <div className="pointer-events-none absolute top-10 right-0 w-[500px] h-[500px] bg-[#00AAFF]/8 blur-[120px] rounded-full" />
+        <div className="pointer-events-none absolute bottom-40 left-0 w-[600px] h-[600px] bg-[#00AAFF]/6 blur-[140px] rounded-full" />
 
         {/* Header Section */}
-        <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20 z-10">
+        <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 z-10">
           <ScrollReveal>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-sm mb-6">
-              <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase text-slate-600">Client FAQ</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 mb-6 backdrop-blur-md">
+              <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#00AAFF]">
+                Client Knowledge Base
+              </span>
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#1A1A1A] tracking-tighter mb-6 leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-4 uppercase leading-[1.1]">
               Frequently Asked{' '}
-              <span className="relative inline-block text-slate-900">
-                Questions. 
-                <span className="absolute bottom-2 left-0 w-full h-3 bg-[#00AEEF]/30 -z-10 -rotate-2" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
+                Questions.
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-              Everything you need to know about partnering with PrimeNest Creatives before we jump on a call.
+            <p className="text-base sm:text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
+              Clear answers on how PrimeNest Creatives works, our delivery turnaround, retainers, and trial cut process.
             </p>
           </ScrollReveal>
         </section>
 
         {/* FAQ Categories & Accordions */}
-        <section className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-          <div className="space-y-16">
+        <section className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+          <div className="space-y-12">
             {faqCategories.map((category, catIndex) => (
-              <ScrollReveal key={catIndex} delay={catIndex * 100}>
-                <div className="mb-8 pl-2 border-l-4 border-[#00AEEF]">
-                  <h2 className="text-2xl md:text-3xl font-bold text-slate-900 ml-4">
+              <ScrollReveal key={catIndex} delay={catIndex * 80}>
+                <div className="mb-4 pl-1 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#00AAFF]" />
+                  <h2 className="text-xl md:text-2xl font-bold text-white uppercase tracking-tight">
                     {category.title}
                   </h2>
                 </div>
-                
-                <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/40 border border-slate-100 overflow-hidden divide-y divide-slate-100">
+
+                <div className="glass-card rounded-3xl overflow-hidden divide-y divide-white/5 border border-white/10">
                   {category.faqs.map((faq, faqIndex) => {
                     const id = `${catIndex}-${faqIndex}`;
                     const isOpen = openIndex === id;
-                    
+
                     return (
                       <div key={faqIndex} className="w-full">
                         <button
+                          type="button"
                           onClick={() => toggleAccordion(catIndex, faqIndex)}
-                          className="w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-slate-50 transition-colors group"
+                          className="w-full flex items-center justify-between p-6 text-left hover:bg-white/[0.02] transition-colors cursor-pointer group"
                         >
-                          <span className={`text-lg font-bold pr-8 transition-colors ${isOpen ? 'text-[#00AEEF]' : 'text-slate-800 group-hover:text-[#00AEEF]'}`}>
+                          <span
+                            className={`text-base sm:text-lg font-bold pr-6 transition-colors ${
+                              isOpen ? 'text-[#00AAFF]' : 'text-white group-hover:text-[#00AAFF]'
+                            }`}
+                          >
                             {faq.question}
                           </span>
-                          <span className={`shrink-0 h-10 w-10 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-[#00AEEF] text-white shadow-md shadow-[#00AEEF]/20 rotate-45' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
-                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                            </svg>
+                          <span
+                            className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 border border-white/10 ${
+                              isOpen
+                                ? 'bg-[#00AAFF] text-[#0A0A0A] rotate-180 border-[#00AAFF]'
+                                : 'bg-white/5 text-white/60 group-hover:border-[#00AAFF]/40'
+                            }`}
+                          >
+                            <ChevronDown className="w-4 h-4" />
                           </span>
                         </button>
-                        <div 
-                          className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-                        >
-                          <p className="px-6 md:px-8 pb-8 text-slate-600 font-medium leading-relaxed text-base md:text-lg">
+                        {isOpen && (
+                          <div className="px-6 pb-6 pt-1 text-sm sm:text-base text-white/70 leading-relaxed">
                             {faq.answer}
-                          </p>
-                        </div>
+                          </div>
+                        )}
                       </div>
                     );
                   })}
@@ -173,24 +155,23 @@ export default function FAQPage() {
               </ScrollReveal>
             ))}
           </div>
-          
-          <ScrollReveal delay={300} className="mt-24 text-center">
-             <div className="inline-block p-[2px] rounded-full bg-gradient-to-r from-[#00AEEF] to-indigo-600">
-               <div className="bg-white rounded-full px-10 py-8 flex flex-col items-center">
-                 <p className="text-slate-500 font-bold uppercase tracking-widest text-sm mb-4">Still have a question?</p>
-                 <button
-                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full text-lg font-bold text-white bg-[#1A1A1A] hover:bg-black shadow-[0_10px_20px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-1"
-                  onClick={() => {
-                     window.location.href = '/#contact';
-                  }}
-                >
-                  Book a Strategy Call
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
-               </div>
-             </div>
+
+          {/* Bottom CTA block */}
+          <ScrollReveal delay={250} className="mt-20 text-center">
+            <div className="glass-card rounded-3xl p-8 sm:p-10 border border-white/10 flex flex-col items-center">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#00AAFF] mb-2">
+                Have footage ready?
+              </span>
+              <h3 className="text-2xl font-bold text-white mb-2">
+                Test our editing quality on your own footage.
+              </h3>
+              <p className="text-sm text-white/60 max-w-md mb-6">
+                Send us one raw video. We will edit it for free so you can see the difference before committing.
+              </p>
+              <CTAButton variant="primary" size="lg" href="/#contact">
+                Get a Free Trial Edit
+              </CTAButton>
+            </div>
           </ScrollReveal>
         </section>
       </main>
@@ -199,3 +180,5 @@ export default function FAQPage() {
     </div>
   );
 }
+
+export default FAQPage;

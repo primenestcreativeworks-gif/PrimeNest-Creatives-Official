@@ -1,141 +1,119 @@
 'use client';
 
-import { useCountUp } from '@/hooks/useCountUp';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
+import React from 'react';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useCountUp } from '@/hooks/useCountUp';
+import { getActiveResults, ResultMetric } from '@/data/results';
+import { TrendingUp, Award, Calendar, CheckCircle } from 'lucide-react';
 
-const noteStyles = [
-  { bg: '#FEF08A', rotate: '-rotate-2', tapeRotate: 'rotate-2' }, // Yellow pastel
-  { bg: '#BBF7D0', rotate: 'rotate-3', tapeRotate: '-rotate-2' }, // Green pastel
-  { bg: '#BAE6FD', rotate: '-rotate-1', tapeRotate: 'rotate-1' }, // Blue pastel
-  { bg: '#FBCFE8', rotate: 'rotate-2', tapeRotate: '-rotate-3' }, // Pink pastel
-];
-
-const results = [
-  {
-    title: 'Video Views',
-    before: 'Up from 2,000 views',
-    after: 200,
-    suffix: 'K+',
-  },
-  {
-    title: 'Subscribers',
-    before: 'Grew from just 500',
-    after: 50,
-    suffix: 'K+',
-  },
-  {
-    title: 'Engagement',
-    before: 'Was stuck at 2%',
-    after: 45,
-    suffix: '%',
-  },
-  {
-    title: 'Content Output',
-    before: 'From 2 videos/month',
-    after: 15,
-    suffix: '/mo',
-  },
-];
-
-function ResultCard({
-  title,
-  before,
-  after,
-  suffix,
-  delay,
-  index,
-}: {
-  title: string;
-  before: string;
-  after: number;
-  suffix?: string;
-  delay: number;
-  index: number;
-}) {
-  const { ref: refAfter, isVisible: visibleAfter } = useScrollReveal();
-  const count = useCountUp(after, { shouldStart: visibleAfter });
-
-  const style = noteStyles[index % noteStyles.length];
+function ResultMetricCard({ item, index }: { item: ResultMetric; index: number }) {
+  const { ref, isVisible } = useScrollReveal();
+  const primaryCount = useCountUp(item.numericCount || 0, { shouldStart: isVisible });
+  const secondaryCount = useCountUp(item.secondaryCount || 0, { shouldStart: isVisible });
 
   return (
-    <ScrollReveal delay={delay} className="w-full flex justify-center py-4">
-      {/* The Sticky Note */}
-      <div 
-        ref={refAfter}
-        className={`relative w-full max-w-[280px] sm:max-w-xs aspect-square p-6 md:p-8 flex flex-col items-center justify-center transform transition-all duration-500 hover:z-10 hover:scale-105 hover:rotate-0 shadow-[0_15px_35px_rgba(0,0,0,0.1)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.15)] ${style.rotate}`}
-        style={{ backgroundColor: style.bg }}
-      >
-        {/* Translucent Tape Highlight */}
-        <div 
-          className={`absolute top-[-14px] w-24 h-7 bg-white/40 backdrop-blur-[2px] shadow-sm border border-white/50 ${style.tapeRotate}`}
-        />
-        
-        {/* Content */}
-        <div className="text-center space-y-3 z-10 w-full">
-          <h3 className="text-black/80 text-sm md:text-base font-bold uppercase tracking-widest border-b border-black/10 pb-2 mb-4">
-            {title}
-          </h3>
-          
-          <div className="relative">
-            <span className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-800 tracking-tighter drop-shadow-sm">
-              {count}{suffix}
-            </span>
-          </div>
+    <div
+      ref={ref}
+      className="glass-card glass-card-hover rounded-3xl p-8 md:p-10 flex flex-col justify-between relative overflow-hidden group"
+    >
+      {/* Background glow accent on hover */}
+      <div className="pointer-events-none absolute -bottom-16 -right-16 w-36 h-36 bg-[#00AAFF]/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-          <p className="text-slate-600 text-sm font-semibold italic mt-4 pt-2">
-            {before}
-          </p>
+      <div>
+        {/* Header client & service label */}
+        <div className="flex items-center justify-between gap-3 mb-6 pb-4 border-b border-white/5">
+          <span className="text-[11px] font-bold uppercase tracking-widest text-[#00AAFF]">
+            {item.clientType}
+          </span>
+          <span className="text-[11px] font-medium text-white/40">
+            {item.serviceType}
+          </span>
         </div>
-        
-        {/* Bottom edge curl shadow block */}
-        <div className="absolute bottom-0 right-0 w-12 h-12 bg-gradient-to-tl from-black/5 to-transparent rounded-tl-full opacity-60 pointer-events-none" />
+
+        {/* Animated Key Metric in White */}
+        <div className="my-4">
+          {item.numericCount !== undefined ? (
+            <div className="flex flex-wrap items-baseline gap-2 text-white font-extrabold tracking-tight">
+              <span className="text-4xl sm:text-5xl md:text-6xl text-white">
+                {primaryCount}
+                <span className="text-[#00AAFF] text-3xl sm:text-4xl">{item.numericSuffix}</span>
+              </span>
+              {item.secondaryCount !== undefined && (
+                <span className="text-3xl sm:text-4xl md:text-5xl text-white/90 ml-1">
+                  + {secondaryCount}
+                  <span className="text-[#00AAFF] text-2xl sm:text-3xl">{item.secondarySuffix}</span>
+                </span>
+              )}
+            </div>
+          ) : (
+            <p className="text-2xl sm:text-3xl md:text-4xl font-black text-white tracking-tight">
+              {item.metricText}
+            </p>
+          )}
+        </div>
+
+        {item.note && (
+          <p className="text-sm text-white/60 mt-3 leading-relaxed">
+            {item.note}
+          </p>
+        )}
       </div>
-    </ScrollReveal>
+
+      <div className="mt-8 pt-4 border-t border-white/5 flex items-center gap-2 text-xs text-white/50">
+        <CheckCircle className="w-3.5 h-3.5 text-[#00AAFF]" />
+        <span>Verified post-production cadence</span>
+      </div>
+    </div>
   );
 }
 
 export function Results() {
-  return (
-    <section id="results" className="relative w-full bg-slate-50 px-4 md:px-8 lg:px-16 py-20 md:py-32 overflow-hidden">
-      {/* Subtle organic background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00AEEF]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pink-300/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/2 pointer-events-none" />
+  const activeResults = getActiveResults();
 
-      <div className="max-w-6xl mx-auto relative z-10">
+  return (
+    <section id="results" className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-24 md:py-32 relative overflow-hidden grain-overlay border-t border-white/5">
+      {/* Background Soft Blue Glow */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00AAFF]/6 blur-[140px] rounded-full" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <ScrollReveal className="mb-16 md:mb-24 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-200 mb-6 shadow-sm">
-             <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-slate-500">
-               Wall of Wins
-             </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1A1A1A] mb-6 tracking-tight">
-            Proof is in the{' '}
-            <span className="relative inline-block text-slate-900">
-              numbers.
-              <span className="absolute bottom-1 left-0 w-full h-3 bg-[#00AEEF]/30 -z-10 -rotate-2" />
+        <ScrollReveal className="mb-16 md:mb-20 text-center max-w-3xl mx-auto">
+          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-3">
+            Production Track Record
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
+            Quantifiable{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
+              Volume & Performance.
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-[#666666] max-w-2xl mx-auto leading-relaxed">
-            See how we've transformed content for creators and brands—turning crickets into loyal audiences.
+          <p className="mt-4 text-base sm:text-lg text-white/60 leading-relaxed font-normal">
+            Real publishing velocity and retention outcomes delivered across client partnerships.
           </p>
         </ScrollReveal>
 
-        {/* Results Sticky Notes Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
-          {results.map((result, index) => (
-            <ResultCard
-              key={result.title}
-              index={index}
-              title={result.title}
-              before={result.before}
-              after={result.after}
-              suffix={result.suffix}
-              delay={index * 150}
-            />
-          ))}
-        </div>
+        {/* Results Cards (Only active cards with verified stats shown) */}
+        {activeResults.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+            {activeResults.map((item, index) => (
+              <ScrollReveal key={item.id} delay={index * 120}>
+                <ResultMetricCard item={item} index={index} />
+              </ScrollReveal>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12 text-white/50 text-sm">
+            Verified case statistics available on request.
+          </div>
+        )}
+
+        {/* Footer Note */}
+        <ScrollReveal delay={200} className="text-center pt-6">
+          <p className="text-xs sm:text-sm text-white/40 tracking-wide font-medium">
+            Details and references available on request.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );
