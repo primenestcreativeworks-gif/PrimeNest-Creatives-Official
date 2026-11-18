@@ -163,10 +163,10 @@ export function EnquiryForm() {
                       key={service}
                       type="button"
                       onClick={() => toggleNeed(service)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer ${
+                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
                         isSelected
-                          ? 'bg-[#00AAFF] text-[#0A0A0A] font-semibold shadow-[0_0_12px_rgba(0,170,255,0.4)]'
-                          : 'bg-white/[0.03] text-white/70 hover:bg-white/[0.08] border border-white/10'
+                          ? 'bg-white text-black font-semibold shadow-[0_0_12px_rgba(255,255,255,0.25)]'
+                          : 'bg-white/[0.03] text-neutral-400 hover:text-white hover:bg-white/[0.06] border border-white/[0.08]'
                       }`}
                     >
                       {service}
@@ -178,7 +178,7 @@ export function EnquiryForm() {
 
             {/* Notes */}
             <div>
-              <label htmlFor="project" className="block text-xs font-semibold uppercase tracking-wider text-white/60 mb-2">
+              <label htmlFor="project" className="block text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">
                 Footage Details / Raw Video Link
               </label>
               <textarea
@@ -188,24 +188,24 @@ export function EnquiryForm() {
                 placeholder="Tell us about your upcoming video, target style, or paste a Google Drive / Dropbox link..."
                 value={formData.project}
                 onChange={handleChange}
-                className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#00AAFF] focus:ring-1 focus:ring-[#00AAFF] transition-colors resize-none"
+                className="w-full px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.08] text-white placeholder-neutral-500 text-sm focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-colors resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 rounded-xl bg-[#00AAFF] text-[#0A0A0A] font-bold text-base hover:bg-[#33BBFF] hover:shadow-[0_0_30px_rgba(0,170,255,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-neutral-200 hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin text-black" />
                   <span>Submitting Trial Request...</span>
                 </>
               ) : (
                 <>
                   <span>Get a Free Trial Edit</span>
-                  <Send className="w-4 h-4" />
+                  <Send className="w-3.5 h-3.5 text-black" />
                 </>
               )}
             </button>

@@ -9,10 +9,10 @@ export function FinalCTA() {
   return (
     <section
       id="contact"
-      className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-24 md:py-32 relative overflow-hidden grain-overlay border-t border-white/5"
+      className="w-full bg-[#030303] px-4 md:px-8 lg:px-12 py-16 md:py-24 relative overflow-hidden grain-overlay border-t border-white/[0.06]"
     >
       {/* Background Soft Blue Glow */}
-      <div className="pointer-events-none absolute -bottom-20 right-1/4 w-[600px] h-[500px] bg-[#00AAFF]/8 blur-[160px] rounded-full" />
+      <div className="pointer-events-none absolute -bottom-20 right-1/4 w-[600px] h-[500px] bg-[#00AAFF]/5 blur-[160px] rounded-full" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
@@ -20,23 +20,23 @@ export function FinalCTA() {
           <div className="lg:col-span-5 space-y-8">
             <ScrollReveal direction="left">
               <div>
-                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-3">
-                  Start Your Trial
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#00AAFF] block mb-2">
+                  Initiate Trial // Protocol
                 </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] uppercase">
                   Ready To Elevate Your{' '}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/95 to-[#00AAFF]">
                     Content Engine?
                   </span>
                 </h2>
-                <p className="mt-4 text-base sm:text-lg text-white/60 leading-relaxed font-normal">
+                <p className="mt-3 text-sm sm:text-base text-neutral-400 leading-relaxed font-normal">
                   Send us your raw footage. We will produce a cinema-grade, high-retention cut so you can experience our quality first-hand.
                 </p>
               </div>
 
               {/* Direct Channels */}
               <div className="pt-6 space-y-3">
-                <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-3">
+                <p className="font-mono text-[11px] uppercase tracking-widest text-neutral-500 mb-2">
                   Direct Studio Access
                 </p>
 
@@ -45,18 +45,18 @@ export function FinalCTA() {
                   href="https://wa.me/917217207811"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glass-card rounded-2xl p-4 flex items-center justify-between group hover:border-[#00AAFF]/40 transition-all duration-300"
+                  className="compute-card rounded-2xl p-4 flex items-center justify-between group hover:border-[#00AAFF]/40 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#00AAFF] group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#00AAFF] group-hover:scale-105 transition-transform">
                       <MessageSquare className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="font-bold text-white text-sm">WhatsApp</p>
-                      <p className="text-xs text-white/50">Fastest response time</p>
+                      <p className="font-semibold text-white text-sm">WhatsApp</p>
+                      <p className="text-xs text-neutral-500">Fastest response window</p>
                     </div>
                   </div>
-                  <span className="text-xs font-semibold text-[#00AAFF] group-hover:translate-x-1 transition-transform">
+                  <span className="text-xs font-mono text-[#00AAFF] group-hover:translate-x-1 transition-transform">
                     Chat →
                   </span>
                 </a>
@@ -64,18 +64,18 @@ export function FinalCTA() {
                 {/* Phone Call */}
                 <a
                   href="tel:+917217207811"
-                  className="glass-card rounded-2xl p-4 flex items-center justify-between group hover:border-[#00AAFF]/40 transition-all duration-300"
+                  className="compute-card rounded-2xl p-4 flex items-center justify-between group hover:border-[#00AAFF]/40 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#00AAFF] group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#00AAFF] group-hover:scale-105 transition-transform">
                       <Phone className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="font-bold text-white text-sm">+91-7217207811</p>
-                      <p className="text-xs text-white/50">Mon–Sat · 9 AM to 9 PM IST</p>
+                      <p className="font-semibold text-white text-sm font-mono">+91-7217207811</p>
+                      <p className="text-xs text-neutral-500">Mon–Sat · 9 AM to 9 PM IST</p>
                     </div>
                   </div>
-                  <span className="text-xs font-semibold text-[#00AAFF] group-hover:translate-x-1 transition-transform">
+                  <span className="text-xs font-mono text-[#00AAFF] group-hover:translate-x-1 transition-transform">
                     Call →
                   </span>
                 </a>
@@ -83,18 +83,18 @@ export function FinalCTA() {
                 {/* Email */}
                 <a
                   href="mailto:primenestcreativeworks@gmail.com"
-                  className="glass-card rounded-2xl p-4 flex items-center justify-between group hover:border-[#00AAFF]/40 transition-all duration-300"
+                  className="compute-card rounded-2xl p-4 flex items-center justify-between group hover:border-[#00AAFF]/40 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#00AAFF] group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#00AAFF] group-hover:scale-105 transition-transform">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="font-bold text-white text-sm">primenestcreativeworks@gmail.com</p>
-                      <p className="text-xs text-white/50">Detailed briefs & inquiries</p>
+                      <p className="font-semibold text-white text-sm font-mono truncate max-w-[200px] sm:max-w-none">primenestcreativeworks@gmail.com</p>
+                      <p className="text-xs text-neutral-500">Detailed briefs & inquiries</p>
                     </div>
                   </div>
-                  <span className="text-xs font-semibold text-[#00AAFF] group-hover:translate-x-1 transition-transform">
+                  <span className="text-xs font-mono text-[#00AAFF] group-hover:translate-x-1 transition-transform">
                     Email →
                   </span>
                 </a>

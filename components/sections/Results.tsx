@@ -123,27 +123,25 @@ export function Results() {
   return (
     <section
       id="results"
-      className="relative w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-16 md:py-24 overflow-hidden grain-overlay border-t border-white/5"
+      className="relative w-full bg-[#030303] px-4 md:px-8 lg:px-12 py-16 md:py-24 overflow-hidden grain-overlay border-t border-white/[0.06]"
     >
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00AAFF]/7 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00AAFF]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <ScrollReveal className="mb-12 md:mb-16 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-4 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#00AAFF] animate-pulse" />
-            <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase text-white/70">
-              Wall of Wins
-            </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] mb-4 shadow-sm font-mono text-[10px] md:text-xs uppercase text-[#00AAFF]">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Wall of Wins // Benchmarks</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-3 tracking-tight uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-[-0.03em] uppercase">
             Proof is in the{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/95 to-[#00AAFF]">
               numbers.
             </span>
           </h2>
-          <p className="text-sm md:text-base text-white/60 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed">
             See how we've transformed content for creators and brands—turning raw talk into compounding organic reach.
           </p>
         </ScrollReveal>

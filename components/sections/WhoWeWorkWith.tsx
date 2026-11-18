@@ -56,24 +56,24 @@ export function WhoWeWorkWith() {
   return (
     <section
       id="who-we-work-with"
-      className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-16 md:py-24 relative overflow-hidden grain-overlay border-t border-white/5"
+      className="w-full bg-[#030303] px-4 md:px-8 lg:px-12 py-16 md:py-24 relative overflow-hidden grain-overlay border-t border-white/[0.06]"
     >
       {/* Background Soft Blue Glow */}
-      <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#00AAFF]/7 blur-[140px] rounded-full" />
+      <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#00AAFF]/5 blur-[140px] rounded-full" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <ScrollReveal className="mb-12 md:mb-16 text-center max-w-3xl mx-auto">
-          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-2">
-            Client Profile & Impact
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#00AAFF] block mb-2">
+            Client Profile // Impact Transformation
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] uppercase">
             Who We{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/95 to-[#00AAFF]">
               Transform.
             </span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-white/60 leading-relaxed font-normal">
+          <p className="mt-3 text-sm sm:text-base text-neutral-400 leading-relaxed font-normal">
             We partner with teams where quality, consistency, and viewer retention directly impact bottom-line reach.
           </p>
         </ScrollReveal>

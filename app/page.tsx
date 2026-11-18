@@ -39,7 +39,7 @@ export default function Home() {
       <Header />
 
       {/* Main Content assembled in exact specified sequence */}
-      <main className="w-full overflow-x-hidden bg-[#0A0A0A]">
+      <main className="w-full overflow-x-hidden bg-[#030303]">
         {/* 1. Hero */}
         <Hero />
 

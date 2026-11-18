@@ -42,7 +42,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased bg-[#0A0A0A] text-white selection:bg-[#00AAFF]/30 selection:text-[#00AAFF] min-h-screen">
+      <body className="font-sans antialiased bg-[#030303] text-white selection:bg-[#00AAFF]/30 selection:text-[#00AAFF] min-h-screen">
         {children}
         <Analytics />
         <Toaster position="top-center" richColors theme="dark" />

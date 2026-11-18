@@ -22,21 +22,24 @@ export function CTAButton({
   disabled = false,
 }: CTAButtonProps) {
   const baseStyles =
-    'relative inline-flex items-center justify-center font-medium rounded-xl tracking-tight transition-all duration-300 active:scale-95 cursor-pointer select-none';
+    'relative inline-flex items-center justify-center font-medium rounded-full tracking-tight transition-all duration-300 active:scale-95 cursor-pointer select-none';
 
   const variantStyles = {
+    // V0-Compute High Contrast White Pill Button
     primary:
-      'bg-[#00AAFF] text-[#0A0A0A] font-semibold hover:bg-[#33BBFF] hover:shadow-[0_0_25px_rgba(0,170,255,0.45)] hover:-translate-y-0.5 active:translate-y-0',
+      'bg-white text-black font-semibold hover:bg-neutral-200 hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] hover:-translate-y-0.5 active:translate-y-0',
+    // Translucent Dark Glass Pill
     secondary:
-      'bg-white/5 border border-white/15 text-white hover:bg-white/10 hover:border-white/30 backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0',
+      'bg-white/[0.04] border border-white/10 text-white hover:bg-white/[0.08] hover:border-white/20 backdrop-blur-md hover:-translate-y-0.5 active:translate-y-0',
+    // Electric Sky Blue Accent Pill
     glow:
-      'bg-[#00AAFF] text-[#0A0A0A] font-semibold shadow-[0_0_30px_rgba(0,170,255,0.4)] hover:shadow-[0_0_40px_rgba(0,170,255,0.6)] hover:bg-[#33BBFF] hover:-translate-y-0.5 active:translate-y-0',
+      'bg-[#00AAFF] text-[#030303] font-semibold shadow-[0_0_30px_rgba(0,170,255,0.4)] hover:shadow-[0_0_40px_rgba(0,170,255,0.6)] hover:bg-[#33BBFF] hover:-translate-y-0.5 active:translate-y-0',
   };
 
   const sizeStyles = {
-    sm: 'px-4 py-2 text-xs md:text-sm',
-    md: 'px-6 py-3 text-sm md:text-base',
-    lg: 'px-8 py-3.5 text-base md:text-lg',
+    sm: 'px-4 py-2 text-xs',
+    md: 'px-5 py-2.5 text-xs sm:text-sm',
+    lg: 'px-7 py-3 text-sm sm:text-base font-semibold',
   };
 
   const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed pointer-events-none' : '';
@@ -70,9 +73,9 @@ export function CTAButton({
   return (
     <button
       type="button"
-      className={finalClassName}
       onClick={onClick}
       disabled={disabled}
+      className={finalClassName}
     >
       {children}
     </button>

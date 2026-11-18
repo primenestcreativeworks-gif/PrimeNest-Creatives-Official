@@ -35,9 +35,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
         <div className="h-16 flex items-center px-6 border-b border-slate-200 dark:border-white/10">
           <Link href="/admin" className="flex items-center">
             <img
-              src="/Extremist - 9 Typography Designs_ Powerful Words-Photoroom.png"
-              alt="PrimeNest"
-              className="h-8 md:h-10 w-auto drop-shadow-[0_4px_20px_rgba(255,255,255,0.3)]"
+              src="/logo-taskbar.png"
+              alt="Logo"
+              className="h-8 md:h-10 w-auto object-contain"
             />
           </Link>
         </div>

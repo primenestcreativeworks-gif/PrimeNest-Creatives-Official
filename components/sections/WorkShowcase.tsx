@@ -216,38 +216,38 @@ export function WorkShowcase() {
   return (
     <section
       id="work"
-      className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-20 md:py-28 relative overflow-hidden grain-overlay border-t border-white/5"
+      className="w-full bg-[#030303] px-4 md:px-8 lg:px-12 py-16 md:py-24 relative overflow-hidden grain-overlay border-t border-white/[0.06]"
     >
       {/* Background radial glow */}
-      <div className="pointer-events-none absolute top-1/3 right-0 w-[600px] h-[600px] rounded-full bg-[#00AAFF]/7 blur-[140px]" />
+      <div className="pointer-events-none absolute top-1/3 right-0 w-[600px] h-[600px] rounded-full bg-[#00AAFF]/5 blur-[140px]" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <ScrollReveal className="mb-10 md:mb-14">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-3">
-                Selected Works
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#00AAFF] block mb-2">
+                Selected Works // Telemetry
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] uppercase">
                 Content That{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/95 to-[#00AAFF]">
                   Converts & Retains.
                 </span>
               </h2>
-              <p className="mt-3 text-sm sm:text-base text-white/60 leading-relaxed font-normal">
+              <p className="mt-3 text-sm sm:text-base text-neutral-400 leading-relaxed font-normal">
                 Explore our post-production work across viral shorts, high-retention long-form, podcasts, and packaging. All videos are live and running.
               </p>
             </div>
 
-            <div className="flex items-center gap-2 text-xs text-white/40">
-              <span className="w-2 h-2 rounded-full bg-[#00AAFF] animate-pulse" />
-              <span>Autoplaying live · Sound on hover</span>
+            <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Autoplaying Live · Continuous Loop</span>
             </div>
           </div>
         </ScrollReveal>
 
-        {/* Filter Navigation Tabs (All Work removed, Shorts default) */}
+        {/* Filter Navigation Tabs */}
         <ScrollReveal className="mb-10">
           <div className="flex items-center gap-2 overflow-x-auto pb-3 custom-scrollbar select-none">
             {filterTabs.map((tab) => {
@@ -257,10 +257,10 @@ export function WorkShowcase() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                  className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium tracking-wide whitespace-nowrap transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? 'bg-[#00AAFF] text-[#0A0A0A] shadow-[0_0_20px_rgba(0,170,255,0.4)]'
-                      : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
+                      ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.25)] font-semibold'
+                      : 'bg-white/[0.03] text-neutral-400 hover:bg-white/[0.06] hover:text-white border border-white/[0.08]'
                   }`}
                 >
                   {tab.label}
