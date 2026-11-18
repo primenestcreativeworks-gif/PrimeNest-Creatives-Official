@@ -152,24 +152,25 @@ function CaseStudyCard({ item }: { item: typeof defaultCaseStudies[0] }) {
   return (
     <>
       <div
-        className="glass-card glass-card-hover rounded-3xl p-5 md:p-6 group cursor-pointer flex flex-col justify-between transition-all duration-300"
+        className="glass-card glass-card-hover rounded-2xl p-4 sm:p-5 group cursor-pointer flex flex-col justify-between transition-all duration-300 max-w-lg w-full mx-auto border border-white/10 hover:border-[#00AAFF]/40 shadow-xl"
         onClick={() => setIsOpen(true)}
       >
-        {/* Milestone Visual */}
-        <div className="relative rounded-2xl overflow-hidden bg-black/60 border border-white/10 mb-5 aspect-[16/10]">
+        {/* Milestone Visual - Medium size, elegant framed container */}
+        <div className="relative rounded-xl overflow-hidden bg-[#121212] border border-white/10 mb-4 h-44 sm:h-48 w-full">
           <img
             src={(item as any).image_url || item.image}
             alt={item.client}
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+            className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider text-[#00AAFF] border border-[#00AAFF]/30">
+          {/* Subtle gradient vignette to blend into dark card */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-black/10 pointer-events-none" />
+          <div className="absolute bottom-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-black/80 backdrop-blur-md text-[9px] font-bold uppercase tracking-wider text-[#00AAFF] border border-[#00AAFF]/30">
             {item.label}
           </div>
         </div>
 
         {/* Content */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-white/50">{item.client}</span>
             <span className="text-xs font-bold text-[#00AAFF] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
@@ -177,7 +178,7 @@ function CaseStudyCard({ item }: { item: typeof defaultCaseStudies[0] }) {
             </span>
           </div>
 
-          <h3 className="font-bold text-lg md:text-xl text-white group-hover:text-[#00AAFF] transition-colors leading-snug">
+          <h3 className="font-bold text-base sm:text-lg text-white group-hover:text-[#00AAFF] transition-colors leading-snug line-clamp-2">
             {item.headline}
           </h3>
         </div>
@@ -216,27 +217,27 @@ export function RecentWork() {
   }, []);
 
   return (
-    <section id="case-studies" className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-24 md:py-32 relative overflow-hidden grain-overlay border-t border-white/5">
+    <section id="case-studies" className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-16 md:py-24 relative overflow-hidden grain-overlay border-t border-white/5">
       {/* Background Soft Blue Glow */}
       <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00AAFF]/6 blur-[140px] rounded-full" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <ScrollReveal className="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
-          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-3">
+        <ScrollReveal className="text-center mb-12 md:mb-16 max-w-3xl mx-auto">
+          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-2">
             In-Depth Case Studies
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
             From Raw Footage To{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
               Compounding Reach.
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-white/60 leading-relaxed font-normal">
+          <p className="mt-3 text-sm sm:text-base text-white/60 leading-relaxed font-normal">
             Deep dive into real post-production transformations we delivered for our partner channels. Click any case study for the breakdown.
           </p>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {dynamicStudies.map((study) => (
             <ScrollReveal key={study.id} delay={100}>
               <CaseStudyCard item={study as any} />

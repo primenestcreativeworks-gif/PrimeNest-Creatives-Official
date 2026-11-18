@@ -4,32 +4,38 @@ import React from 'react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { CTAButton } from '@/components/CTAButton';
 import { motion } from 'framer-motion';
-import { Video, CalendarCheck, ShieldCheck, RefreshCw, Clock, UserCheck, ArrowRight } from 'lucide-react';
+import { Video, CalendarCheck, ShieldCheck, RefreshCw, Clock, UserCheck, ArrowRight, Sparkles } from 'lucide-react';
 
 const steps = [
   {
     number: '01',
     icon: Video,
     title: 'Trial Edit',
+    phase: 'Step 01 // Validation',
     description:
-      'Send us a clip. We edit it so you can judge our work on your own footage before committing to any package.',
+      'Send us a clip. We edit it so you can judge our pacing, sound design, and motion graphics on your own footage before committing.',
     highlight: 'Zero risk · Test our cut quality',
+    tilt: 'md:[transform:rotateY(5deg)_rotateX(2deg)]',
   },
   {
     number: '02',
     icon: CalendarCheck,
     title: 'Pilot Month',
+    phase: 'Step 02 // Calibration',
     description:
-      'A full month of your content at real volume, with no long-term lock-in. We build your editing templates and communication rhythm.',
+      'A full month of your content at real volume, with no long-term lock-in. We build your editing templates, title styles, and communication rhythm.',
     highlight: 'Volume test · Full post-pipeline',
+    tilt: 'md:[transform:translateZ(20px)_scale(1.02)]',
   },
   {
     number: '03',
     icon: ShieldCheck,
     title: 'Ongoing Partnership',
+    phase: 'Step 03 // Scale',
     description:
       'If it works, we move to a monthly retainer with a locked rate and a priority queue for your scheduled uploads.',
     highlight: 'Locked rate · Dedicated queue',
+    tilt: 'md:[transform:rotateY(-5deg)_rotateX(2deg)]',
   },
 ];
 
@@ -41,122 +47,115 @@ const badges = [
 
 export function Process() {
   return (
-    <section id="process" className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-24 md:py-32 relative overflow-hidden grain-overlay border-t border-white/5">
+    <section
+      id="process"
+      className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-20 md:py-28 relative overflow-hidden grain-overlay border-t border-white/5"
+    >
       {/* Background ambient glow */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#00AAFF]/6 blur-[140px] rounded-full" />
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#00AAFF]/7 blur-[150px] rounded-full" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <ScrollReveal className="mb-16 md:mb-20 text-center max-w-3xl mx-auto">
-          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-3">
-            Onboarding & Execution
+        <ScrollReveal className="mb-14 md:mb-18 text-center max-w-3xl mx-auto">
+          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-2">
+            Execution Roadmap
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
             How We{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
               Work Together.
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-white/60 leading-relaxed font-normal">
+          <p className="mt-3 text-sm sm:text-base text-white/60 leading-relaxed font-normal">
             No endless sales cycles. We start with real footage and prove our value on your timeline.
           </p>
         </ScrollReveal>
 
-        {/* 3-Step Timeline with Animated Connecting Line */}
-        <div className="relative mb-16 md:mb-20">
-          {/* Animated Connecting Line on Desktop */}
-          <div className="hidden md:block absolute top-[68px] left-[15%] right-[15%] h-[2px] z-0">
-            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none">
-              <motion.line
-                x1="0"
-                y1="0"
-                x2="100%"
-                y2="0"
-                stroke="rgba(0, 170, 255, 0.4)"
-                strokeWidth="2"
-                strokeDasharray="6 6"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 1.2, ease: 'easeInOut' }}
-              />
-            </svg>
-          </div>
-
-          {/* 3 Step Cards */}
+        {/* 3D Elevated Cards Container */}
+        <div className="relative mb-14 md:mb-18 [perspective:1400px]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 relative z-10">
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <ScrollReveal key={step.number} delay={index * 150}>
-                  <div className="glass-card glass-card-hover rounded-3xl p-8 md:p-10 h-full flex flex-col justify-between group relative overflow-hidden">
-                    {/* Step Number Badge */}
+                <ScrollReveal key={step.number} delay={index * 120}>
+                  <motion.div
+                    whileHover={{
+                      scale: 1.04,
+                      rotateY: 0,
+                      rotateX: 0,
+                      y: -8,
+                      transition: { duration: 0.3 },
+                    }}
+                    className={`relative rounded-3xl p-6 md:p-8 h-full flex flex-col justify-between bg-gradient-to-b from-[#141418] via-[#0E0E12] to-[#0A0A0E] border-2 border-white/10 hover:border-[#00AAFF]/60 shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_30px_rgba(0,170,255,0.12)] transition-all duration-500 group [transform-style:preserve-3d] ${step.tilt}`}
+                  >
+                    {/* Top glossy 3D highlight */}
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/10 to-transparent rounded-t-3xl opacity-70" />
+
+                    {/* Step Corner Glow on hover */}
+                    <div className="pointer-events-none absolute -top-16 -right-16 w-36 h-36 bg-[#00AAFF]/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
                     <div>
-                      <div className="flex items-center justify-between mb-8">
-                        <div className="w-14 h-14 rounded-2xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center text-[#00AAFF] shadow-lg group-hover:border-[#00AAFF]/40 group-hover:scale-105 transition-all duration-300">
-                          <Icon className="w-7 h-7" />
+                      {/* Step Number & 3D Icon Header */}
+                      <div className="flex items-center justify-between mb-6 [transform:translateZ(25px)]">
+                        <div className="w-13 h-13 rounded-2xl bg-gradient-to-br from-[#1C2533] to-[#0D1522] border border-[#00AAFF]/30 flex items-center justify-center text-[#00AAFF] shadow-[0_8px_20px_rgba(0,0,0,0.6)] group-hover:scale-110 group-hover:shadow-[0_0_20px_#00AAFF]/40 transition-all duration-300">
+                          <Icon className="w-6 h-6" />
                         </div>
-                        <span className="text-3xl font-black text-white/20 tracking-tighter group-hover:text-[#00AAFF]/40 transition-colors">
+                        <span className="text-3xl font-black text-white/15 tracking-tighter group-hover:text-[#00AAFF]/40 transition-colors font-mono">
                           {step.number}
                         </span>
                       </div>
 
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#00AAFF] transition-colors">
+                      {/* Phase tag */}
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-[#00AAFF] mb-2 [transform:translateZ(20px)]">
+                        {step.phase}
+                      </p>
+
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-3 group-hover:text-[#00AAFF] transition-colors leading-snug [transform:translateZ(25px)]">
                         {step.title}
                       </h3>
-                      <p className="text-white/65 text-sm md:text-base leading-relaxed mb-6">
+
+                      <p className="text-white/60 text-xs md:text-sm leading-relaxed mb-6 [transform:translateZ(15px)]">
                         {step.description}
                       </p>
                     </div>
 
-                    <div className="pt-4 border-t border-white/5">
-                      <span className="text-xs font-semibold text-[#00AAFF] tracking-wide flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#00AAFF]" />
-                        {step.highlight}
-                      </span>
+                    {/* 3D Floating Pill Highlight */}
+                    <div className="border-t border-white/5 pt-4 [transform:translateZ(20px)]">
+                      <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] group-hover:bg-[#00AAFF]/10 border border-white/10 group-hover:border-[#00AAFF]/30 px-3.5 py-1.5 text-xs text-white/80 transition-colors">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#00AAFF] shadow-[0_0_8px_#00AAFF]" />
+                        <span className="font-medium text-[11px]">{step.highlight}</span>
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </ScrollReveal>
               );
             })}
           </div>
         </div>
 
-        {/* 3 Trust Badges */}
-        <ScrollReveal delay={200} className="mb-14">
+        {/* 3 Badges */}
+        <ScrollReveal className="mb-12">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {badges.map((badge) => {
-              const BadgeIcon = badge.icon;
+              const Icon = badge.icon;
               return (
                 <div
                   key={badge.label}
-                  className="rounded-2xl bg-white/[0.03] border border-white/10 p-4 flex items-center justify-center text-center gap-3"
+                  className="rounded-2xl bg-white/[0.03] border border-white/10 p-3.5 flex items-center justify-center gap-2.5 text-center text-xs text-white/80 hover:border-[#00AAFF]/30 transition-colors shadow-md"
                 >
-                  <BadgeIcon className="w-4 h-4 text-[#00AAFF] shrink-0" />
-                  <span className="text-xs sm:text-sm font-semibold text-white/80">
-                    {badge.label}
-                  </span>
+                  <Icon className="w-4 h-4 text-[#00AAFF] shrink-0" />
+                  <span className="font-semibold">{badge.label}</span>
                 </div>
               );
             })}
           </div>
         </ScrollReveal>
 
-        {/* Section CTA */}
-        <ScrollReveal delay={300} className="text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/[0.02] border border-white/10 rounded-2xl p-4 sm:p-2 sm:pl-6 backdrop-blur-md">
-            <span className="text-sm md:text-base font-semibold text-white">
-              Send us one video. See what it can become.
-            </span>
-            <CTAButton
-              variant="primary"
-              size="md"
-              href="#contact"
-              className="w-full sm:w-auto"
-            >
-              Get a Free Trial Edit
-            </CTAButton>
-          </div>
+        {/* Action CTA */}
+        <ScrollReveal className="text-center">
+          <CTAButton variant="primary" size="lg" href="#contact">
+            Send us one video. See what it can become.
+          </CTAButton>
         </ScrollReveal>
       </div>
     </section>

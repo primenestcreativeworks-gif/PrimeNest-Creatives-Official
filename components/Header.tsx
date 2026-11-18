@@ -52,15 +52,12 @@ export function Header() {
             <img
               src="/Extremist - 9 Typography Designs_ Powerful Words-Photoroom.png"
               alt="PrimeNest Creatives"
-              className="h-full w-auto transition-transform duration-300 group-hover:scale-105 filter invert brightness-200 opacity-95"
+              className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105 filter invert brightness-200 opacity-95"
               onError={(e) => {
                 const target = e.target as HTMLElement;
                 target.style.display = 'none';
               }}
             />
-            <span className="font-bold text-lg md:text-xl tracking-tight text-white group-hover:text-[#00AAFF] transition-colors">
-              PrimeNest <span className="text-[#00AAFF]">Creatives</span>
-            </span>
           </div>
         </Link>
 

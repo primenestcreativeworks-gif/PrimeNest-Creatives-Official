@@ -7,7 +7,8 @@ import {
   FileText,
   Settings,
   LogOut,
-  Users
+  Users,
+  Image as ImageIcon
 } from 'lucide-react';
 
 import { createClient } from '@/utils/supabase/server';
@@ -53,6 +54,10 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           <Link href="/admin/case-studies" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-[#00AEEF] hover:bg-[#00AEEF]/10 transition-colors">
             <FolderKanban className="w-4 h-4" />
             Case Studies
+          </Link>
+          <Link href="/admin/thumbnails" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-[#00AEEF] hover:bg-[#00AEEF]/10 transition-colors">
+            <ImageIcon className="w-4 h-4" />
+            Thumbnails
           </Link>
           <Link href="/admin/testimonials" className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-[#00AEEF] hover:bg-[#00AEEF]/10 transition-colors">
             <MessageSquareQuote className="w-4 h-4" />

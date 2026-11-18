@@ -7,12 +7,11 @@ import { showcaseItems, ShowcaseItem } from '@/data/videos';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SlidersHorizontal } from 'lucide-react';
 
-type FilterCategory = 'all' | 'long-form' | 'shorts' | 'podcasts' | 'thumbnails' | 'ai';
+type FilterCategory = 'shorts' | 'long-form' | 'podcasts' | 'thumbnails' | 'ai';
 
 const filterTabs: { id: FilterCategory; label: string }[] = [
-  { id: 'all', label: 'All Work' },
-  { id: 'long-form', label: 'Long-Form (16:9)' },
   { id: 'shorts', label: 'Shorts & Reels (9:16)' },
+  { id: 'long-form', label: 'Long-Form (16:9)' },
   { id: 'podcasts', label: 'Podcasts' },
   { id: 'thumbnails', label: 'Thumbnails & Packaging' },
   { id: 'ai', label: 'AI Content' },
@@ -56,7 +55,7 @@ function BeforeAfterSlider({
 
   return (
     <div
-      className="relative w-full aspect-video rounded-2xl overflow-hidden select-none cursor-ew-resize border border-white/10"
+      className="relative w-full aspect-video rounded-xl overflow-hidden select-none cursor-ew-resize border border-white/10"
       onMouseDown={() => setIsDragging(true)}
       onMouseUp={() => setIsDragging(false)}
       onMouseLeave={() => setIsDragging(false)}
@@ -70,7 +69,7 @@ function BeforeAfterSlider({
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
       />
-      <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider text-[#00AAFF] border border-[#00AAFF]/30 pointer-events-none">
+      <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[9px] font-bold uppercase tracking-wider text-[#00AAFF] border border-[#00AAFF]/30 pointer-events-none">
         {afterLabel}
       </div>
 
@@ -86,120 +85,171 @@ function BeforeAfterSlider({
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           draggable={false}
         />
-        <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-black/70 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider text-white/70 border border-white/20 pointer-events-none">
+        <div className="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[9px] font-bold uppercase tracking-wider text-white/70 border border-white/20 pointer-events-none">
           {beforeLabel}
         </div>
       </div>
 
       {/* Vertical Divider Line with handle */}
       <div
-        className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize shadow-[0_0_12px_rgba(0,170,255,0.8)]"
+        className="absolute top-0 bottom-0 w-0.5 bg-white cursor-ew-resize shadow-[0_0_12px_rgba(0,170,255,0.8)]"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-[#00AAFF] text-[#0A0A0A] flex items-center justify-center shadow-lg border-2 border-white pointer-events-none">
-          <SlidersHorizontal className="w-4 h-4" />
+        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#00AAFF] text-[#0A0A0A] flex items-center justify-center shadow-lg border-2 border-white pointer-events-none">
+          <SlidersHorizontal className="w-3.5 h-3.5" />
         </div>
       </div>
     </div>
   );
 }
 
-function ShowcaseCardVisual({ item }: { item: ShowcaseItem }) {
-  const [viewMode, setViewMode] = useState<'slider' | 'video'>(item.beforeAfter ? 'slider' : 'video');
+/**
+ * Pinned to Wall Thumbnail Card with realistic 3D metallic nail
+ */
+function WallPinnedThumbnailCard({
+  item,
+  index,
+}: {
+  item: ShowcaseItem;
+  index: number;
+}) {
+  const [viewMode, setViewMode] = useState<'slider' | 'image'>(
+    item.beforeAfter ? 'slider' : 'image'
+  );
+
+  // Subtle natural angle for each pinned item on the gallery wall
+  const rotations = ['-rotate-1', 'rotate-2', '-rotate-2', 'rotate-1'];
+  const rotationClass = rotations[index % rotations.length];
 
   return (
-    <div className="relative">
-      {item.beforeAfter && item.videoUrl && (
-        <div className="absolute top-2.5 right-2.5 z-30 flex items-center gap-1 bg-black/80 backdrop-blur-md p-1 rounded-xl border border-white/10 text-[10px] font-bold">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setViewMode('slider');
-            }}
-            className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
-              viewMode === 'slider' ? 'bg-[#00AAFF] text-[#0A0A0A]' : 'text-white/60 hover:text-white'
-            }`}
-          >
-            Compare
-          </button>
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setViewMode('video');
-            }}
-            className={`px-2.5 py-1 rounded-lg transition-colors cursor-pointer ${
-              viewMode === 'video' ? 'bg-[#00AAFF] text-[#0A0A0A]' : 'text-white/60 hover:text-white'
-            }`}
-          >
-            Live Play
-          </button>
-        </div>
-      )}
+    <div
+      className={`relative pt-4 transition-transform duration-500 ease-out hover:rotate-0 hover:scale-[1.02] ${rotationClass}`}
+    >
+      {/* 3D Metallic Nail Pinned to Wall */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center pointer-events-none">
+        {/* Nail Head: Polished steel stud */}
+        <div className="w-4 h-4 rounded-full bg-gradient-to-br from-slate-200 via-slate-400 to-slate-700 border border-slate-300/80 shadow-[0_3px_8px_rgba(0,0,0,0.9),inset_0_1px_2px_rgba(255,255,255,0.8)]" />
+        {/* Shadow of nail head on wall */}
+        <div className="w-1 h-2 bg-gradient-to-b from-slate-700/80 to-transparent -mt-0.5" />
+      </div>
 
-      {viewMode === 'slider' && item.beforeAfter ? (
-        <BeforeAfterSlider
-          beforeImage={item.beforeAfter.beforeImage}
-          afterImage={item.beforeAfter.afterImage}
-          beforeLabel={item.beforeAfter.beforeLabel}
-          afterLabel={item.beforeAfter.afterLabel}
-        />
-      ) : (
-        <VideoPlayer
-          src={item.videoUrl}
-          thumbnail={item.thumbnail}
-          title={item.title}
-          aspectRatio={item.aspectRatio}
-          autoplayPreview={true}
-        />
-      )}
+      {/* Frame / Photo Canvas hanging on wall */}
+      <div className="relative bg-[#141416] border-2 border-white/15 rounded-2xl p-3 shadow-[0_22px_45px_rgba(0,0,0,0.95),0_6px_15px_rgba(0,0,0,0.7)] group">
+        {/* Switch for Before/After if available */}
+        {item.beforeAfter && (
+          <div className="absolute top-5 right-5 z-20 flex items-center gap-1 bg-black/80 backdrop-blur-md p-1 rounded-xl border border-white/10 text-[9px] font-bold">
+            <button
+              type="button"
+              onClick={() => setViewMode('slider')}
+              className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${
+                viewMode === 'slider'
+                  ? 'bg-[#00AAFF] text-[#0A0A0A]'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              Compare
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode('image')}
+              className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${
+                viewMode === 'image'
+                  ? 'bg-[#00AAFF] text-[#0A0A0A]'
+                  : 'text-white/60 hover:text-white'
+              }`}
+            >
+              Full
+            </button>
+          </div>
+        )}
+
+        {/* Visual Content */}
+        <div className="rounded-xl overflow-hidden bg-black/80">
+          {viewMode === 'slider' && item.beforeAfter ? (
+            <BeforeAfterSlider
+              beforeImage={item.beforeAfter.beforeImage}
+              afterImage={item.beforeAfter.afterImage}
+              beforeLabel={item.beforeAfter.beforeLabel}
+              afterLabel={item.beforeAfter.afterLabel}
+            />
+          ) : (
+            <div className="relative aspect-video overflow-hidden">
+              <img
+                src={item.thumbnail}
+                alt={item.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          )}
+        </div>
+
+        {/* Thumbnail Details */}
+        <div className="pt-3 px-1">
+          <div className="flex items-center justify-between text-[10px] text-white/50 mb-1">
+            <span className="font-semibold text-[#00AAFF] uppercase tracking-wider">
+              {item.categoryLabel}
+            </span>
+            <span>{item.clientName}</span>
+          </div>
+          <h4 className="font-bold text-sm text-white group-hover:text-[#00AAFF] transition-colors leading-snug">
+            {item.title}
+          </h4>
+          {item.description && (
+            <p className="text-white/50 text-xs mt-1.5 line-clamp-2">
+              {item.description}
+            </p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
 
 export function WorkShowcase() {
-  const [activeTab, setActiveTab] = useState<FilterCategory>('all');
+  // Default active tab is 'shorts' per user request
+  const [activeTab, setActiveTab] = useState<FilterCategory>('shorts');
 
-  const filteredItems = showcaseItems.filter((item) => {
-    if (activeTab === 'all') return true;
-    return item.category === activeTab;
-  });
+  const filteredItems = showcaseItems.filter(
+    (item) => item.category === activeTab
+  );
 
   return (
-    <section id="work" className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-24 md:py-32 relative overflow-hidden grain-overlay border-t border-white/5">
+    <section
+      id="work"
+      className="w-full bg-[#0A0A0A] px-4 md:px-8 lg:px-12 py-20 md:py-28 relative overflow-hidden grain-overlay border-t border-white/5"
+    >
       {/* Background radial glow */}
       <div className="pointer-events-none absolute top-1/3 right-0 w-[600px] h-[600px] rounded-full bg-[#00AAFF]/7 blur-[140px]" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
-        <ScrollReveal className="mb-12 md:mb-16">
+        <ScrollReveal className="mb-10 md:mb-14">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="max-w-2xl">
               <span className="text-xs font-semibold tracking-[0.2em] uppercase text-[#00AAFF] block mb-3">
                 Selected Works
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.1] uppercase">
                 Content That{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#00AAFF]">
                   Converts & Retains.
                 </span>
               </h2>
-              <p className="mt-4 text-base sm:text-lg text-white/60 leading-relaxed font-normal">
-                Explore our post-production work across long-form YouTube cuts, viral reels, video podcasts, and high-CTR thumbnail packaging. Click any card to play live.
+              <p className="mt-3 text-sm sm:text-base text-white/60 leading-relaxed font-normal">
+                Explore our post-production work across viral shorts, high-retention long-form, podcasts, and packaging. All videos are live and running.
               </p>
             </div>
 
-            <div className="hidden md:flex items-center gap-2 text-xs text-white/40">
-              <span className="w-2 h-2 rounded-full bg-[#00AAFF]" />
-              <span>Hover for muted preview · Click to play live</span>
+            <div className="flex items-center gap-2 text-xs text-white/40">
+              <span className="w-2 h-2 rounded-full bg-[#00AAFF] animate-pulse" />
+              <span>Autoplaying live · Sound on hover</span>
             </div>
           </div>
         </ScrollReveal>
 
-        {/* Filter Navigation Tabs */}
-        <ScrollReveal className="mb-12">
-          <div className="flex items-center gap-2 overflow-x-auto pb-4 custom-scrollbar select-none">
+        {/* Filter Navigation Tabs (All Work removed, Shorts default) */}
+        <ScrollReveal className="mb-10">
+          <div className="flex items-center gap-2 overflow-x-auto pb-3 custom-scrollbar select-none">
             {filterTabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -207,7 +257,7 @@ export function WorkShowcase() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                  className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all duration-300 cursor-pointer ${
                     isActive
                       ? 'bg-[#00AAFF] text-[#0A0A0A] shadow-[0_0_20px_rgba(0,170,255,0.4)]'
                       : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white border border-white/10'
@@ -220,13 +270,17 @@ export function WorkShowcase() {
           </div>
         </ScrollReveal>
 
-        {/* Content Showcase Grid with Animated Transitions */}
+        {/* Content Showcase Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          className={`grid gap-6 md:gap-8 ${
+            activeTab === 'shorts'
+              ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4'
+              : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+          }`}
         >
           <AnimatePresence mode="popLayout">
-            {filteredItems.map((item) => (
+            {filteredItems.map((item, index) => (
               <motion.div
                 key={item.id}
                 layout
@@ -234,44 +288,48 @@ export function WorkShowcase() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.3 }}
-                className={`flex flex-col ${
-                  item.aspectRatio === '9:16' && activeTab !== 'shorts'
-                    ? 'lg:col-span-1'
-                    : ''
-                }`}
               >
-                <div className="glass-card glass-card-hover rounded-3xl p-4 md:p-5 h-full flex flex-col justify-between group">
-                  {/* Visual Container (Live Play or Comparison) */}
-                  <div className="mb-4 relative">
-                    <ShowcaseCardVisual item={item} />
-                  </div>
+                {activeTab === 'thumbnails' ? (
+                  /* Pinned to wall with metallic nail design */
+                  <WallPinnedThumbnailCard item={item} index={index} />
+                ) : (
+                  /* Live Playing Video Card */
+                  <div className="glass-card glass-card-hover rounded-2xl p-3 md:p-4 h-full flex flex-col justify-between group">
+                    {/* Live Video - No cover image, always playing */}
+                    <div className="mb-3 relative">
+                      <VideoPlayer
+                        src={item.videoUrl}
+                        thumbnail={item.thumbnail}
+                        title={item.title}
+                        aspectRatio={item.aspectRatio}
+                      />
+                    </div>
 
-                  {/* Metadata */}
-                  <div className="flex-1 flex flex-col justify-between pt-1">
-                    <div>
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-wider text-[#00AAFF]">
+                    {/* Metadata */}
+                    <div className="pt-1 flex flex-col justify-between">
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[9px] font-bold uppercase tracking-wider text-[#00AAFF]">
                           {item.categoryLabel}
                         </span>
                         {item.clientName && (
-                          <span className="text-[11px] font-medium text-white/40">
+                          <span className="text-[10px] font-medium text-white/40 truncate">
                             {item.clientName}
                           </span>
                         )}
                       </div>
 
-                      <h3 className="font-bold text-base md:text-lg text-white group-hover:text-[#00AAFF] transition-colors leading-snug">
+                      <h3 className="font-bold text-sm md:text-base text-white group-hover:text-[#00AAFF] transition-colors leading-snug line-clamp-2">
                         {item.title}
                       </h3>
 
                       {item.description && (
-                        <p className="text-white/60 text-xs md:text-sm mt-2 leading-relaxed">
+                        <p className="text-white/50 text-xs mt-1.5 leading-relaxed line-clamp-2">
                           {item.description}
                         </p>
                       )}
                     </div>
                   </div>
-                </div>
+                )}
               </motion.div>
             ))}
           </AnimatePresence>

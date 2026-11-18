@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/next'
-import { ThemeProvider } from '@/components/ThemeProvider'
 import { Toaster } from 'sonner';
 import './globals.css'
 
@@ -28,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" style={{ colorScheme: 'dark' }}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -36,17 +35,15 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
+        {/* Force purge any old cached theme from localStorage */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{localStorage.removeItem('theme');document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');}catch(e){}`,
+          }}
+        />
       </head>
-      <body className="font-sans antialiased bg-[#0A0A0A] text-white selection:bg-[#00AAFF]/30 selection:text-[#00AAFF]">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          forcedTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+      <body className="font-sans antialiased bg-[#0A0A0A] text-white selection:bg-[#00AAFF]/30 selection:text-[#00AAFF] min-h-screen">
+        {children}
         <Analytics />
         <Toaster position="top-center" richColors theme="dark" />
       </body>

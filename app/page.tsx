@@ -9,7 +9,6 @@ import { RecentWork } from '@/components/sections/RecentWork';
 import { Results } from '@/components/sections/Results';
 import { Process } from '@/components/sections/Process';
 import { WhoWeWorkWith } from '@/components/sections/WhoWeWorkWith';
-import { Founder } from '@/components/sections/Founder';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { Footer } from '@/components/Footer';
@@ -59,20 +58,17 @@ export default function Home() {
         {/* 5. How We Work (3-step timeline + connecting line + 3 badges) */}
         <Process />
 
-        {/* 6. Who We Work With (4 client groups + What we don't take on) */}
+        {/* 6. Who We Work With (Wavy 3D tilted transformation tabs per client reference) */}
         <WhoWeWorkWith />
 
-        {/* 7. Founder (Lakshya Saxena quote, renders photo slot only if file exists) */}
-        <Founder />
-
-        {/* 8. Testimonials (Redesigned dark glassmorphism cards per user instruction) */}
+        {/* 7. Testimonials (Redesigned dark glassmorphism cards per user instruction) */}
         <Testimonials />
 
-        {/* 9. Contact / CTA (Primary CTA + Enquiry form + direct contact coordinates) */}
+        {/* 8. Contact / CTA (Primary CTA + Enquiry form + direct contact coordinates) */}
         <FinalCTA />
       </main>
 
-      {/* 10. Footer */}
+      {/* 9. Footer */}
       <Footer />
     </>
   );
