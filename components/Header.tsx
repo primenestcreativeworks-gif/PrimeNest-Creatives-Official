@@ -28,10 +28,10 @@ export function Header() {
 
   const navItems = [
     { label: 'Services', href: '#services', isDropdown: true },
-    { label: 'Showcase', href: '#work' },
-    { label: 'Case Studies', href: '#case-studies' },
+    { label: 'Work', href: '#work' },
     { label: 'Results', href: '#results' },
-    { label: 'How We Work', href: '#process' },
+    { label: 'Process', href: '/process' },
+    { label: 'FAQ', href: '#faq' },
     { label: 'About', href: '/about' },
   ];
 

@@ -3,12 +3,12 @@
 import { LogoLoader } from '@/components/LogoLoader';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/sections/Hero';
+import { MarqueeTicker } from '@/components/sections/MarqueeTicker';
 import { Services } from '@/components/sections/Services';
 import { WorkShowcase } from '@/components/sections/WorkShowcase';
-import { RecentWork } from '@/components/sections/RecentWork';
 import { Results } from '@/components/sections/Results';
-import { Process } from '@/components/sections/Process';
 import { WhoWeWorkWith } from '@/components/sections/WhoWeWorkWith';
+import { FAQ } from '@/components/sections/FAQ';
 import { Testimonials } from '@/components/sections/Testimonials';
 import { FinalCTA } from '@/components/sections/FinalCTA';
 import { Footer } from '@/components/Footer';
@@ -19,7 +19,7 @@ export default function Home() {
     '@type': 'Organization',
     name: 'PrimeNest Creatives',
     url: 'https://primenestcreatives.com',
-    logo: 'https://primenestcreatives.com/logo.png',
+    logo: 'https://primenestcreatives.com/logo-taskbar.png',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+91-7217207811',
@@ -40,35 +40,35 @@ export default function Home() {
 
       {/* Main Content assembled in exact specified sequence */}
       <main className="w-full overflow-x-hidden bg-[#030303]">
-        {/* 1. Hero */}
+        {/* 1. Hero with Anton typography, tilted reels, and hand-drawn doodles */}
         <Hero />
 
-        {/* 2. Services (4 core cards + Also available chips + Comparison table) */}
+        {/* 2. Marquee Ticker Strip: Infinite scrolling metrics & Anton punchlines */}
+        <MarqueeTicker />
+
+        {/* 3. Services (4 core cards + Also available chips + Comparison table) */}
         <Services />
 
-        {/* 3. Content Showcase (Filterable showcase, 16:9, 9:16, Before/After, Live Play) */}
+        {/* 4. The Work Showcase (Shorts, Long-form, Podcasts, Wall-pinned Thumbnails, AI) */}
         <WorkShowcase />
 
-        {/* 3.1 Case Studies (Deep-dive before/after client breakdowns) */}
-        <RecentWork />
-
-        {/* 4. Results (Data-driven count-up cards, hiding unfilled placeholders) */}
+        {/* 5. Results (Prototype 3-column layout, 2-column wide big stat, Anton numbers) */}
         <Results />
-
-        {/* 5. How We Work (3-step timeline + connecting line + 3 badges) */}
-        <Process />
 
         {/* 6. Who We Work With (Wavy 3D tilted transformation tabs per client reference) */}
         <WhoWeWorkWith />
 
-        {/* 7. Testimonials (Redesigned dark glassmorphism cards per user instruction) */}
+        {/* 7. FAQ (Prototype 2-column accordion with electric sky blue accents) */}
+        <FAQ />
+
+        {/* 8. Testimonials (Redesigned dark glassmorphism cards per user instruction) */}
         <Testimonials />
 
-        {/* 8. Contact / CTA (Primary CTA + Enquiry form + direct contact coordinates) */}
+        {/* 9. Contact / CTA (Primary CTA + Enquiry form + direct contact coordinates) */}
         <FinalCTA />
       </main>
 
-      {/* 9. Footer */}
+      {/* 10. Footer */}
       <Footer />
     </>
   );
