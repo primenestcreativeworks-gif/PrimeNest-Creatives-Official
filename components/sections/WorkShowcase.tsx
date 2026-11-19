@@ -14,33 +14,39 @@ interface TabConfig {
   id: FilterCategory;
   label: string;
   note: string;
+  color: string;
 }
 
 const filterTabs: TabConfig[] = [
   {
     id: 'shorts',
     label: 'Short-form',
-    note: 'Reels and Shorts with hooks, captions and pacing built for retention.',
+    note: 'Reels and Shorts with aggressive hooks, dynamic captions and pacing built for 70%+ retention.',
+    color: 'from-[#00AAFF] to-[#0077CC]',
   },
   {
     id: 'long-form',
     label: 'Long-form',
     note: 'Story-driven YouTube edits, with custom motion graphics where the video needs them.',
+    color: 'from-[#A855F7] to-[#7E22CE]',
   },
   {
     id: 'podcasts',
     label: 'Podcasts',
-    note: 'Full episodes, trailers and clips, so one recording feeds a month of posting.',
+    note: 'Full multi-cam episodes, trailers and clips, so one recording feeds a month of posting.',
+    color: 'from-[#00F5A0] to-[#059669]',
   },
   {
     id: 'thumbnails',
     label: 'Thumbnails & Packaging',
     note: 'High-CTR thumbnail packaging designed to win YouTube browse and suggestion algorithms.',
+    color: 'from-[#FFB800] to-[#D97706]',
   },
   {
     id: 'ai',
     label: 'AI content',
     note: 'Gen AI visuals and AI UGC ads engineered for algorithmic velocity.',
+    color: 'from-[#FF3366] to-[#BE185D]',
   },
 ];
 
@@ -96,7 +102,7 @@ function BeforeAfterSlider({
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
       />
-      <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[9px] font-bold uppercase tracking-wider text-[#00AAFF] border border-[#00AAFF]/30 pointer-events-none">
+      <div className="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md text-[10px] font-montserrat font-bold uppercase tracking-wider text-[#00AAFF] border border-[#00AAFF]/40 pointer-events-none shadow-md">
         {afterLabel}
       </div>
 
@@ -112,7 +118,7 @@ function BeforeAfterSlider({
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           draggable={false}
         />
-        <div className="absolute bottom-2.5 left-2.5 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-[9px] font-bold uppercase tracking-wider text-white/70 border border-white/20 pointer-events-none">
+        <div className="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded bg-black/85 backdrop-blur-md text-[10px] font-montserrat font-bold uppercase tracking-wider text-white/80 border border-white/20 pointer-events-none shadow-md">
           {beforeLabel}
         </div>
       </div>
@@ -160,11 +166,11 @@ function WallPinnedThumbnailCard({
       {/* Frame / Photo Canvas hanging on wall */}
       <div className="relative bg-[#141416] border-2 border-white/15 rounded-2xl p-3 shadow-[0_22px_45px_rgba(0,0,0,0.95),0_6px_15px_rgba(0,0,0,0.7)] group">
         {item.beforeAfter && (
-          <div className="absolute top-5 right-5 z-20 flex items-center gap-1 bg-black/80 backdrop-blur-md p-1 rounded-xl border border-white/10 text-[9px] font-bold">
+          <div className="absolute top-5 right-5 z-20 flex items-center gap-1 bg-black/85 backdrop-blur-md p-1 rounded-xl border border-white/10 text-[10px] font-montserrat font-bold">
             <button
               type="button"
               onClick={() => setViewMode('slider')}
-              className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${
+              className={`px-2.5 py-0.5 rounded transition-colors cursor-pointer ${
                 viewMode === 'slider'
                   ? 'bg-[#00AAFF] text-[#0A0A0A]'
                   : 'text-white/60 hover:text-white'
@@ -175,7 +181,7 @@ function WallPinnedThumbnailCard({
             <button
               type="button"
               onClick={() => setViewMode('image')}
-              className={`px-2 py-0.5 rounded transition-colors cursor-pointer ${
+              className={`px-2.5 py-0.5 rounded transition-colors cursor-pointer ${
                 viewMode === 'image'
                   ? 'bg-[#00AAFF] text-[#0A0A0A]'
                   : 'text-white/60 hover:text-white'
@@ -206,17 +212,17 @@ function WallPinnedThumbnailCard({
         </div>
 
         <div className="pt-3 px-1">
-          <div className="flex items-center justify-between text-[10px] text-white/50 mb-1">
-            <span className="font-semibold text-[#00AAFF] uppercase tracking-wider">
+          <div className="flex items-center justify-between text-xs text-white/60 mb-1">
+            <span className="font-montserrat font-bold text-[#00AAFF] uppercase tracking-wider text-[11px]">
               {item.categoryLabel}
             </span>
-            <span>{item.clientName}</span>
+            <span className="font-montserrat font-medium text-white/50">{item.clientName}</span>
           </div>
-          <h4 className="font-bold text-sm text-white group-hover:text-[#00AAFF] transition-colors leading-snug">
+          <h4 className="font-montserrat font-bold text-sm text-white group-hover:text-[#00AAFF] transition-colors leading-snug">
             {item.title}
           </h4>
           {item.description && (
-            <p className="text-white/50 text-xs mt-1.5 line-clamp-2">
+            <p className="font-montserrat text-white/60 text-xs mt-1.5 line-clamp-2 font-normal leading-relaxed">
               {item.description}
             </p>
           )}
@@ -241,19 +247,21 @@ export function WorkShowcase() {
       id="work"
       className="w-full bg-[#030303] px-4 md:px-8 lg:px-12 py-16 md:py-24 relative overflow-hidden grain-overlay border-t border-white/[0.08]"
     >
-      {/* Background radial glow */}
-      <div className="pointer-events-none absolute top-1/3 right-0 w-[600px] h-[600px] rounded-full bg-[#00AAFF]/5 blur-[140px]" />
+      {/* Background multi-color radial glow */}
+      <div className="pointer-events-none absolute top-1/3 right-0 w-[600px] h-[600px] rounded-full bg-[#00AAFF]/6 blur-[150px]" />
+      <div className="pointer-events-none absolute bottom-10 left-10 w-[500px] h-[500px] rounded-full bg-[#A855F7]/5 blur-[140px]" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header matching prototype */}
+        {/* Section Header */}
         <ScrollReveal className="mb-8 md:mb-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <ScissorsDoodle className="w-5 h-5 text-[#00AAFF]" />
-                <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#00AAFF]">
+                <ScissorsDoodle className="w-6 h-6" />
+                <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#00AAFF]">
                   Selected Works // Telemetry
                 </span>
+                <SparkleDoodle className="w-4 h-4 text-[#FFB800]" />
               </div>
 
               <h2 className="font-anton text-4xl sm:text-5xl md:text-6xl text-white tracking-wide uppercase leading-none">
@@ -261,16 +269,16 @@ export function WorkShowcase() {
               </h2>
             </div>
 
-            <div className="flex items-center gap-2 text-xs font-mono text-neutral-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-              <span>Autoplaying Live · Muted Loop</span>
+            <div className="flex items-center gap-2 text-xs font-montserrat font-semibold text-neutral-300">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#00F5A0] animate-pulse shadow-[0_0_8px_#00F5A0]" />
+              <span>Autoplaying Live · Instant High-Speed Stream</span>
             </div>
           </div>
         </ScrollReveal>
 
         {/* Filter Navigation Tabs */}
         <ScrollReveal className="mb-4">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 custom-scrollbar select-none">
+          <div className="flex items-center gap-2.5 overflow-x-auto pb-2 custom-scrollbar select-none">
             {filterTabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
@@ -278,10 +286,10 @@ export function WorkShowcase() {
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide whitespace-nowrap transition-all duration-300 cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-montserrat font-bold tracking-wide whitespace-nowrap transition-all duration-300 cursor-pointer ${
                     isActive
-                      ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.3)]'
-                      : 'bg-[#141414] text-neutral-400 hover:bg-[#1f1f1f] hover:text-white border border-white/10'
+                      ? 'bg-gradient-to-r from-white via-white to-[#00AAFF] text-black shadow-[0_0_25px_rgba(255,255,255,0.35)] scale-105'
+                      : 'bg-[#121212] text-neutral-300 hover:bg-[#1a1a1a] hover:text-white border border-white/10'
                   }`}
                 >
                   {tab.label}
@@ -291,12 +299,12 @@ export function WorkShowcase() {
           </div>
         </ScrollReveal>
 
-        {/* Prototype Subtitle Note */}
+        {/* Subtitle Note in Montserrat */}
         <div className="mb-8 flex items-center justify-between">
-          <p className="text-neutral-400 text-xs sm:text-sm font-normal">
+          <p className="font-montserrat text-neutral-300 text-xs sm:text-sm font-normal">
             {activeTabConfig.note}
           </p>
-          <SparkleDoodle className="w-4 h-4 text-[#00AAFF] hidden sm:block opacity-60" />
+          <FilmWaveDoodle className="hidden sm:block opacity-75" />
         </div>
 
         {/* Content Showcase Grid */}
@@ -310,7 +318,7 @@ export function WorkShowcase() {
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item, index) => {
-              // Alternating subtle tilt for reels matching prototype (-1.2deg and +1.2deg)
+              // Alternating subtle tilt for shorts matching prototype (-1.2deg and +1.2deg)
               const tiltClass =
                 activeTab === 'shorts'
                   ? index % 2 === 0
@@ -331,8 +339,8 @@ export function WorkShowcase() {
                   {activeTab === 'thumbnails' ? (
                     <WallPinnedThumbnailCard item={item} index={index} />
                   ) : (
-                    <div className="glass-card rounded-2xl p-3 md:p-3.5 h-full flex flex-col justify-between group border border-white/10 hover:border-[#00AAFF]/40 shadow-xl bg-[#0d0d0d]">
-                      {/* Video Player - Direct native playback, no cover images */}
+                    <div className="glass-card rounded-2xl p-3 md:p-3.5 h-full flex flex-col justify-between group border border-white/10 hover:border-[#00AAFF]/50 shadow-xl bg-[#0d0d0d]">
+                      {/* Video Player - Instant live autoplay */}
                       <div className="mb-3">
                         <VideoPlayer
                           src={item.videoUrl}
@@ -345,22 +353,22 @@ export function WorkShowcase() {
                       {/* Metadata below video */}
                       <div className="pt-1 flex flex-col justify-between">
                         <div className="flex items-center justify-between gap-2 mb-1.5">
-                          <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono uppercase tracking-wider text-[#00AAFF]">
+                          <span className="px-2.5 py-0.5 rounded-full bg-[#00AAFF]/10 border border-[#00AAFF]/25 text-[10px] font-montserrat font-bold uppercase tracking-wider text-[#00AAFF]">
                             {item.categoryLabel}
                           </span>
                           {item.clientName && (
-                            <span className="text-[10px] font-mono text-white/40 truncate">
+                            <span className="text-[11px] font-montserrat font-semibold text-white/50 truncate">
                               {item.clientName}
                             </span>
                           )}
                         </div>
 
-                        <h3 className="font-bold text-sm md:text-base text-white group-hover:text-[#00AAFF] transition-colors leading-snug line-clamp-2">
+                        <h3 className="font-montserrat font-bold text-sm md:text-base text-white group-hover:text-[#00AAFF] transition-colors leading-snug line-clamp-2">
                           {item.title}
                         </h3>
 
                         {item.description && (
-                          <p className="text-white/40 text-xs mt-1.5 leading-relaxed line-clamp-2 font-normal">
+                          <p className="font-montserrat text-white/50 text-xs mt-1.5 leading-relaxed line-clamp-2 font-normal">
                             {item.description}
                           </p>
                         )}

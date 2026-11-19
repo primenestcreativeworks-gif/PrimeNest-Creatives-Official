@@ -1,98 +1,217 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { createClient } from '@/utils/supabase/client';
-import { Quote } from 'lucide-react';
+import { Quote, Star } from 'lucide-react';
+import { SparkleDoodle } from '@/components/Doodles';
 
-const defaultTestimonials = [
+interface Testimonial {
+  name: string;
+  role: string;
+  channel: string;
+  quote: string;
+  metric: string;
+  metricColor: 'blue' | 'purple' | 'emerald' | 'amber';
+  avatarBg: string;
+  initials: string;
+}
+
+const testimonialsRow1: Testimonial[] = [
   {
-    role: 'YouTube Creator',
+    name: 'Harsh Tiwari',
+    role: 'Creator & Influencer',
+    channel: 'Personal Brand · 180K+ reach',
     quote:
-      "PrimeNest took my messy raw footage and turned it into episodes my audience actually binges. I'm finally consistent without burning out.",
-    name: 'Nolan M.',
-    title: 'Education Channel · 250K+ subs',
+      'PrimeNest took my raw, messy video files and turned them into reels that consistently pull 50K-200K views. I focus on speaking, they handle the rest.',
+    metric: '50K-200K VIEWS/REEL',
+    metricColor: 'blue',
+    avatarBg: 'from-[#00AAFF] to-[#0066AA]',
+    initials: 'HT',
   },
   {
-    role: 'Agency Owner',
+    name: 'G.S. Vision IAS Team',
+    role: 'Educational Institute',
+    channel: 'UPSC Coaching · 45K+ Subs',
     quote:
-      'They built a reliable pipeline from long-form videos into clips for every platform. Our content output 3×’d without hiring in‑house.',
-    name: 'Phil C.',
-    title: 'Marketing Studio Founder',
+      'Our student enrollment surged after PrimeNest revamped our daily educational reels. Pacing, graphics, and clarity are 10/10.',
+    metric: '10K → 60K SUBS',
+    metricColor: 'emerald',
+    avatarBg: 'from-[#10B981] to-[#047857]',
+    initials: 'GS',
   },
   {
-    role: 'Brand Team',
+    name: 'Vittshala Institute',
+    role: 'Financial Education',
+    channel: 'Investment & Finance Channel',
     quote:
-      'Fast turnaround, clean communication, and edits that match our brand guidelines perfectly. It feels like an in‑house team, not an editor.',
-    name: 'Michaela L.',
-    title: 'Media Lead at DTC Brand',
+      'The custom motion graphics and retention edits they build for our financial explainers increased our average watch time from 35% to 68%.',
+    metric: '+68% AVG RETENTION',
+    metricColor: 'purple',
+    avatarBg: 'from-[#A855F7] to-[#6B21A8]',
+    initials: 'VI',
+  },
+  {
+    name: 'Paradise Yatra',
+    role: 'Travel Media Company',
+    channel: 'Documentary & Destination Series',
+    quote:
+      'Cinematic color grading and atmospheric sound design that rivals full television productions. They never miss our weekly upload schedule.',
+    metric: '4K CINEMATIC MASTER',
+    metricColor: 'amber',
+    avatarBg: 'from-[#FFB800] to-[#D97706]',
+    initials: 'PY',
   },
 ];
 
-export function Testimonials() {
-  const [dynamicTestimonials, setDynamicTestimonials] = useState(defaultTestimonials);
+const testimonialsRow2: Testimonial[] = [
+  {
+    name: 'Phil C.',
+    role: 'Marketing Agency Founder',
+    channel: 'Growth Agency · Multi-Client',
+    quote:
+      'They built a reliable pipeline from long-form video podcasts into 30+ clips every month. Our content output 3xed without hiring in-house editors.',
+    metric: '3X CONTENT OUTPUT',
+    metricColor: 'emerald',
+    avatarBg: 'from-[#00F5A0] to-[#059669]',
+    initials: 'PC',
+  },
+  {
+    name: 'Supriya Singh',
+    role: 'Wellness & Yoga Coach',
+    channel: 'Lifestyle & Wellness Creator',
+    quote:
+      'The beat cuts and clean typography in their reels made my workouts look incredible. My Instagram following doubled in under 60 days.',
+    metric: '2X INSTAGRAM GROWTH',
+    metricColor: 'blue',
+    avatarBg: 'from-[#00AAFF] to-[#3B82F6]',
+    initials: 'SS',
+  },
+  {
+    name: 'Nolan M.',
+    role: 'YouTube Creator',
+    channel: 'Education Channel · 250K+ Subs',
+    quote:
+      'Fast turnaround, clean communication on Slack, and edits that match our channel guidelines perfectly. It feels like an elite in-house team.',
+    metric: '250K+ SUBSCRIBERS',
+    metricColor: 'purple',
+    avatarBg: 'from-[#EC4899] to-[#BE185D]',
+    initials: 'NM',
+  },
+  {
+    name: 'Divya & Team',
+    role: 'Founder Storyteller',
+    channel: 'Startup & Tech Documentaries',
+    quote:
+      'PrimeNest understands narrative arc. They don’t just cut clips—they craft stories that keep viewers hooked till the very last second.',
+    metric: '92% REVISION-FREE',
+    metricColor: 'amber',
+    avatarBg: 'from-[#FFB800] to-[#EA580C]',
+    initials: 'DT',
+  },
+];
 
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const supabase = createClient();
-        const { data } = await supabase
-          .from('testimonials')
-          .select('*')
-          .order('created_at', { ascending: false });
-        if (data && data.length > 0) {
-          setDynamicTestimonials(data);
-        }
-      } catch (err) {
-        // Fallback gracefully to default testimonials
-      }
-    };
-    fetchTestimonials();
-  }, []);
+function TestimonialCard({ item }: { item: Testimonial }) {
+  const badgeClasses = {
+    blue: 'bg-[#00AAFF]/15 text-[#00AAFF] border-[#00AAFF]/30',
+    purple: 'bg-[#A855F7]/15 text-[#C084FC] border-[#A855F7]/30',
+    emerald: 'bg-[#00F5A0]/15 text-[#00F5A0] border-[#00F5A0]/30',
+    amber: 'bg-[#FFB800]/15 text-[#FFB800] border-[#FFB800]/30',
+  };
 
   return (
-    <section id="testimonials" className="w-full bg-[#030303] px-4 md:px-8 lg:px-12 py-16 md:py-24 relative overflow-hidden grain-overlay border-t border-white/[0.06]">
-      {/* Background Soft Blue Glow */}
-      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00AAFF]/5 blur-[140px] rounded-full" />
+    <div className="w-[320px] sm:w-[380px] shrink-0 rounded-2xl bg-[#0d0d0d] border border-white/10 p-6 flex flex-col justify-between hover:border-[#00AAFF]/50 hover:shadow-[0_15px_35px_rgba(0,170,255,0.12)] transition-all duration-300 group select-none">
+      <div>
+        {/* Top Header: Stars & Metric Pill */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-1 text-[#FFB800]">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-4 h-4 fill-current" />
+            ))}
+          </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <ScrollReveal className="mb-12 md:mb-16 text-center max-w-3xl mx-auto">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#00AAFF] block mb-2">
-            Creator Signals // Testimonials
+          <span
+            className={`font-montserrat font-bold text-[10px] tracking-wider uppercase px-2.5 py-0.5 rounded-full border ${
+              badgeClasses[item.metricColor]
+            }`}
+          >
+            {item.metric}
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] uppercase">
-            What Our Partners{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/95 to-[#00AAFF]">
-              Say.
+        </div>
+
+        {/* Quote text */}
+        <p className="font-montserrat text-xs sm:text-sm text-neutral-300 leading-relaxed font-normal mb-5 italic">
+          “{item.quote}”
+        </p>
+      </div>
+
+      {/* Creator Profile */}
+      <div className="pt-4 border-t border-white/[0.08] flex items-center gap-3">
+        <div
+          className={`w-10 h-10 rounded-full bg-gradient-to-br ${item.avatarBg} flex items-center justify-center text-white font-montserrat font-bold text-xs shadow-md shrink-0`}
+        >
+          {item.initials}
+        </div>
+        <div className="min-w-0">
+          <h4 className="font-montserrat font-bold text-sm text-white truncate group-hover:text-[#00AAFF] transition-colors">
+            {item.name}
+          </h4>
+          <p className="font-montserrat text-xs text-[#00AAFF] truncate font-medium">
+            {item.channel}
+          </p>
+          <p className="font-montserrat text-[10px] text-neutral-400 uppercase tracking-wider truncate font-semibold">
+            {item.role}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function Testimonials() {
+  // Seamless double array for continuous loop marquee
+  const row1Doubled = [...testimonialsRow1, ...testimonialsRow1];
+  const row2Doubled = [...testimonialsRow2, ...testimonialsRow2];
+
+  return (
+    <section
+      id="testimonials"
+      className="w-full bg-[#030303] py-20 md:py-28 relative overflow-hidden border-t border-white/[0.08]"
+    >
+      {/* Background Soft Glow */}
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-[#00AAFF]/6 blur-[150px] rounded-full" />
+
+      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10 mb-12 text-center">
+        <ScrollReveal>
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#00AAFF]">
+              Creator Signals // Testimonials
             </span>
+            <SparkleDoodle className="w-4 h-4 text-[#FFB800]" />
+          </div>
+
+          <h2 className="font-anton text-4xl sm:text-5xl md:text-6xl text-white tracking-wide uppercase leading-none mb-4">
+            What Our Partners <span className="text-[#00AAFF]">Say.</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-neutral-400 leading-relaxed font-normal">
-            Real feedback from creators and brand teams who rely on our post-production engine.
+
+          <p className="font-montserrat text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto leading-relaxed font-normal">
+            Real feedback from creators, founders, and institutes whose content pipelines we power every single week.
           </p>
         </ScrollReveal>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-stretch">
-          {dynamicTestimonials.map((item, index) => (
-            <ScrollReveal key={item.name} delay={index * 120} className="h-full">
-              <div className="compute-card compute-card-hover rounded-2xl p-6 sm:p-8 h-full flex flex-col justify-between group relative overflow-hidden">
-                {/* Quote Icon */}
-                <div className="w-9 h-9 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-[#00AAFF] mb-5 group-hover:scale-105 transition-transform duration-300">
-                  <Quote className="w-4 h-4" />
-                </div>
+      {/* Infinite Horizontal Scrolling Track (Marquee with pause on hover) */}
+      <div className="w-full overflow-hidden mask-marquee-horizontal space-y-5">
+        {/* Row 1 (Leftward scroll) */}
+        <div className="animate-marquee flex gap-5 items-stretch">
+          {row1Doubled.map((item, idx) => (
+            <TestimonialCard key={`r1-${idx}`} item={item} />
+          ))}
+        </div>
 
-                <p className="text-xs sm:text-sm leading-relaxed text-neutral-300 font-normal mb-6 flex-1 italic">
-                  “{item.quote}”
-                </p>
-
-                <div className="pt-3.5 border-t border-white/[0.06]">
-                  <p className="font-bold text-white text-sm">{item.name}</p>
-                  <p className="text-xs text-[#00AAFF] font-mono mt-0.5">{item.title}</p>
-                  {item.role && (
-                    <p className="text-[10px] text-neutral-500 mt-1 uppercase tracking-wider font-mono">{item.role}</p>
-                  )}
-                </div>
-              </div>
-            </ScrollReveal>
+        {/* Row 2 (Rightward scroll) */}
+        <div className="animate-marquee-reverse flex gap-5 items-stretch">
+          {row2Doubled.map((item, idx) => (
+            <TestimonialCard key={`r2-${idx}`} item={item} />
           ))}
         </div>
       </div>

@@ -84,7 +84,7 @@ export function Header() {
                 {/* Dropdown Menu */}
                 {isServicesOpen && (
                   <div className="absolute top-full left-0 mt-2 w-56 rounded-2xl bg-[#090909]/95 border border-white/[0.08] p-2 shadow-2xl backdrop-blur-2xl animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                    <p className="px-3 py-1.5 text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                    <p className="px-3 py-1.5 text-[10px] font-montserrat font-bold uppercase tracking-widest text-neutral-400">
                       Capabilities
                     </p>
                     <div className="flex flex-col gap-1">
@@ -117,7 +117,7 @@ export function Header() {
         {/* Right Action / CTA */}
         <div className="hidden md:flex items-center gap-3">
           {/* Live Studio Status Pill */}
-          <div className="hidden lg:inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.02] text-[11px] font-mono text-neutral-400">
+          <div className="hidden lg:inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.02] text-[11px] font-montserrat font-semibold text-neutral-300">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
             <span>Accepting Channels</span>
           </div>

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { SquigDoodle, SparkleDoodle } from '@/components/Doodles';
-import { ChevronDown, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -71,13 +71,13 @@ export function FAQ() {
           <div className="lg:col-span-5">
             <ScrollReveal>
               <div className="sticky top-28 space-y-6">
-                <SquigDoodle className="w-24 h-4 text-[#00AAFF]" />
+                <SquigDoodle className="w-24 h-4" />
 
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#00AAFF]">
+                  <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#00AAFF]">
                     Knowledge Base // Telemetry
                   </span>
-                  <SparkleDoodle className="w-4 h-4 text-[#00AAFF]" />
+                  <SparkleDoodle className="w-4 h-4 text-[#FFB800]" />
                 </div>
 
                 <h2 className="font-anton text-4xl sm:text-5xl md:text-6xl text-white tracking-wide uppercase leading-none">
@@ -85,14 +85,14 @@ export function FAQ() {
                   <span className="text-[#00AAFF]">Questions.</span>
                 </h2>
 
-                <p className="text-neutral-400 text-sm sm:text-base leading-relaxed max-w-md font-normal">
+                <p className="font-montserrat text-neutral-300 text-sm sm:text-base leading-relaxed max-w-md font-normal">
                   Everything you need to know about our post-production pipeline, turnaround timelines, revisions, and the free trial cut on your footage.
                 </p>
 
                 <div className="pt-2">
                   <a
                     href="mailto:primenestcreativeworks@gmail.com?subject=Question%20about%20PrimeNest"
-                    className="inline-flex items-center gap-2 text-xs font-semibold text-white/80 hover:text-[#00AAFF] transition-colors group"
+                    className="inline-flex items-center gap-2 text-xs font-montserrat font-bold text-white/90 hover:text-[#00AAFF] transition-colors group"
                   >
                     <span>Have another question? Chat with our team</span>
                     <span className="group-hover:translate-x-1 transition-transform">→</span>
@@ -111,7 +111,7 @@ export function FAQ() {
                   <div
                     className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
                       isOpen
-                        ? 'bg-[#121212] border-[#00AAFF]/40 shadow-[0_10px_30px_rgba(0,170,255,0.06)]'
+                        ? 'bg-[#121212] border-[#00AAFF]/50 shadow-[0_10px_30px_rgba(0,170,255,0.08)]'
                         : 'bg-[#0d0d0d] border-white/10 hover:border-white/20'
                     }`}
                   >
@@ -121,14 +121,14 @@ export function FAQ() {
                       className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer select-none"
                       aria-expanded={isOpen}
                     >
-                      <span className="font-bold text-base sm:text-lg text-white leading-snug">
+                      <span className="font-montserrat font-bold text-base sm:text-lg text-white leading-snug">
                         {faq.question}
                       </span>
 
                       <div
                         className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 ${
                           isOpen
-                            ? 'bg-[#00AAFF] text-[#0A0A0A] border-[#00AAFF] rotate-45'
+                            ? 'bg-[#00AAFF] text-[#0A0A0A] border-[#00AAFF] rotate-45 shadow-[0_0_12px_#00AAFF]'
                             : 'bg-white/[0.04] text-[#00AAFF] border-white/10'
                         }`}
                       >
@@ -137,7 +137,7 @@ export function FAQ() {
                     </button>
 
                     {isOpen && (
-                      <div className="px-5 sm:px-6 pb-6 pt-0 text-sm text-neutral-400 leading-relaxed font-normal border-t border-white/[0.04]">
+                      <div className="px-5 sm:px-6 pb-6 pt-0 text-sm text-neutral-300 leading-relaxed font-montserrat font-normal border-t border-white/[0.04]">
                         <p className="mt-3">{faq.answer}</p>
                       </div>
                     )}

@@ -35,11 +35,11 @@ export function Footer() {
               </div>
             </Link>
 
-            <p className="text-sm text-neutral-400 max-w-sm leading-relaxed">
+            <p className="font-montserrat text-sm text-neutral-400 max-w-sm leading-relaxed font-normal">
               Your end-to-end content post-production team. Dedicated to YouTube long-form, high-retention shorts, video podcasts, and click-worthy thumbnail packaging.
             </p>
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.02] px-3.5 py-1 text-xs text-neutral-400 font-mono">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.02] px-3.5 py-1 text-xs text-neutral-300 font-montserrat font-medium">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399] animate-pulse" />
               <span>India-based studio · Serving global creators</span>
             </div>
@@ -47,10 +47,10 @@ export function Footer() {
 
           {/* Quick Navigation (3 cols) */}
           <div className="md:col-span-3 space-y-4">
-            <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-[#00AAFF]">
+            <h4 className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#00AAFF]">
               Capabilities
             </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-400">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-300 font-montserrat font-medium">
               <li>
                 <a href="/services/long-form-edit" className="hover:text-white transition-colors">
                   Long-Form YouTube Cuts
@@ -86,16 +86,16 @@ export function Footer() {
 
           {/* Direct Contact Coordinates (4 cols) */}
           <div className="md:col-span-4 space-y-4">
-            <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-[#00AAFF]">
+            <h4 className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#00AAFF]">
               Direct Contact
             </h4>
-            <div className="space-y-3 text-xs sm:text-sm text-neutral-400">
+            <div className="space-y-3 text-xs sm:text-sm text-neutral-300 font-montserrat font-medium">
               <a
                 href="tel:+917217207811"
                 className="flex items-center gap-3 hover:text-white transition-colors group"
               >
                 <Phone className="w-4 h-4 text-[#00AAFF] shrink-0" />
-                <span className="font-mono">+91-7217207811</span>
+                <span>+91-7217207811</span>
               </a>
 
               <a
@@ -103,7 +103,7 @@ export function Footer() {
                 className="flex items-center gap-3 hover:text-white transition-colors group"
               >
                 <Mail className="w-4 h-4 text-[#00AAFF] shrink-0" />
-                <span className="truncate font-mono">primenestcreativeworks@gmail.com</span>
+                <span className="truncate">primenestcreativeworks@gmail.com</span>
               </a>
 
               <a
@@ -113,7 +113,7 @@ export function Footer() {
                 className="flex items-center gap-3 hover:text-white transition-colors group"
               >
                 <Globe className="w-4 h-4 text-[#00AAFF] shrink-0" />
-                <span className="font-mono">primenestcreatives.com</span>
+                <span>primenestcreatives.com</span>
               </a>
 
               <a
@@ -130,7 +130,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-mono">
+        <div className="pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400 font-montserrat font-medium">
           <p>© {new Date().getFullYear()} All rights reserved.</p>
 
           <div className="flex items-center gap-6">

@@ -49,7 +49,7 @@ export default function AboutPage() {
               ].map((stat, i) => (
                 <ScrollReveal key={i} delay={i * 120}>
                   <div className="glass-card glass-card-hover rounded-3xl p-8 text-center border border-white/10 shadow-2xl">
-                    <p className="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-[#00AAFF] mb-2 font-mono">
+                    <p className="text-5xl lg:text-6xl font-anton text-transparent bg-clip-text bg-gradient-to-br from-white to-[#00AAFF] mb-2 tracking-wide">
                       {stat.number}
                     </p>
                     <p className="text-xs font-bold uppercase tracking-widest text-white mb-1">

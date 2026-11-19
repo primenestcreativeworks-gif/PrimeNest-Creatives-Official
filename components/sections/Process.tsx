@@ -57,7 +57,7 @@ export function Process() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <ScrollReveal className="mb-14 md:mb-18 text-center max-w-3xl mx-auto">
-          <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#00AAFF] block mb-2">
+          <span className="font-montserrat font-bold text-xs uppercase tracking-widest text-[#00AAFF] block mb-2">
             Execution Protocol // 3-Step Flow
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-[-0.03em] leading-[1.1] uppercase">

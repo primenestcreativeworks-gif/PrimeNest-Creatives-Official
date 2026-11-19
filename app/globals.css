@@ -51,8 +51,8 @@
 @theme inline {
   --font-sans: 'Inter', 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-anton: 'Anton', 'Arial Narrow', Impact, sans-serif;
-  --font-mono: 'Geist Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  --font-display: 'Anton', 'Bebas Neue', 'Archivo Black', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-display: 'Anton', 'Montserrat', 'Archivo', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -86,19 +86,25 @@
   -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 65%, transparent 100%);
 }
 
+/* Horizontal fade mask for infinite scrolling marquees */
+.mask-marquee-horizontal {
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
 /* Subtle Film Grain */
 .grain-overlay {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
 }
 
-/* V0-Compute Glassmorphism Card with Top Inset Highlight */
+/* Glassmorphism Cards */
 .glass-card,
 .compute-card {
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(255, 255, 255, 0.02);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
 .glass-card-hover,
@@ -109,13 +115,13 @@
 .glass-card-hover:hover,
 .compute-card-hover:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 20px 45px -15px rgba(0, 0, 0, 0.95), 0 0 25px rgba(0, 170, 255, 0.1);
+  border-color: rgba(0, 170, 255, 0.4);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 20px 45px -15px rgba(0, 0, 0, 0.95), 0 0 25px rgba(0, 170, 255, 0.15);
 }
 
 /* Aurora / Beacon Glow */
 .compute-beacon {
-  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 170, 255, 0.12), rgba(99, 102, 241, 0.06) 50%, transparent 80%);
+  background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 170, 255, 0.12), rgba(168, 85, 247, 0.08) 50%, transparent 80%);
 }
 
 .electric-glow {
@@ -146,7 +152,7 @@
   }
 
   h1, h2, h3 {
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -191,18 +197,42 @@
   letter-spacing: 0.01em;
 }
 
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Infinite Horizontal Marquee Scroll */
 @keyframes marqueeScroll {
   0% { transform: translateX(0%); }
   100% { transform: translateX(-50%); }
 }
 
+@keyframes marqueeScrollReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marqueeScroll 30s linear infinite;
+  animation: marqueeScroll 35s linear infinite;
 }
 
-.animate-marquee:hover {
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 45s linear infinite;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marqueeScrollReverse 40s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee-slow:hover,
+.animate-marquee-reverse:hover {
   animation-play-state: paused;
 }
 
